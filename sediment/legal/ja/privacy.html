@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — Sediment</title>
+  <link rel="stylesheet" href="../_legal.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-head">
+      <p class="brand">Sediment</p>
+      <h1>プライバシーポリシー</h1>
+      <p class="meta">施行日: 2026-04-29</p>
+      <p class="lang-switch"><a href="../ko/privacy.html">한국어</a> · <a href="../en/privacy.html">English</a> · <strong>日本語</strong></p>
+    </header>
+
+    <div class="notice">
+      <strong>草案のお知らせ</strong>
+      本書は作成中の草案であり、法律専門家の確認を受けていません。実際のサービスに適用する前に法務確認を受けることを強く推奨します。
+    </div>
+
+    <p><strong>施行日</strong>: 2026-04-29 <strong>最終更新日</strong>: 2026-04-29</p>
+    <p>Dongne(以下「当社」)は、モバイルアプリケーション「Sediment」(以下「本サービス」)を通じて取得する利用者の個人情報を、以下のとおり取り扱います。本ポリシーは、日本の「個人情報の保護に関する法律」(個人情報保護法)その他関連法令を遵守して定めています。</p>
+    <h2 id="s1">1. 取得する個人情報</h2>
+    <h3>1-1. 匿名利用時</h3>
+    <ul><li><strong>自動生成識別子</strong>: Firebase Authentication UID(メール・氏名なし)</li><li><strong>端末情報</strong>: タイムゾーン、言語設定</li></ul>
+    <h3>1-2. アカウント連携時(メール・Apple・Google)</h3>
+    <ul><li><strong>メールアドレス</strong>(必須)</li><li><strong>表示名</strong>、<strong>プロフィール画像 URL</strong>(Apple・Google が提供する場合)</li></ul>
+    <h3>1-3. サービス利用中に作成・保存される情報</h3>
+    <ul><li><strong>利用者が記録した内容(かけら)</strong>: テキスト、添付写真</li><li><strong>AI レイヤー</strong>: AI が生成した要約および呼び出しメタデータ</li><li><strong>利用統計</strong>: 作成時刻、連続記録日数、クレジット残高変動</li></ul>
+    <h3>1-4. 決済時</h3>
+    <ul><li><strong>サブスクリプション状態</strong>: 有効フラグ、満了日時、商品 ID、決済元(App Store / Google Play)</li><li>当社は<strong>カード番号や口座番号などの決済手段情報を直接取得・保管しません。</strong> これらの情報は Apple、Google、RevenueCat が処理します。</li></ul>
+    <p>当社は、利用者が自発的に入力した情報以外、Cookie・広告識別子・第三者トラッカー・App Tracking Transparency による追跡を行いません。</p>
+    <h2 id="s2">2. 利用目的</h2>
+    <table><thead><tr><th>取得項目</th><th>利用目的</th></tr></thead><tbody><tr><td>Firebase UID</td><td>利用者の識別、データ分離</td></tr><tr><td>メールアドレス・表示名</td><td>アカウント復旧、別端末からの同期</td></tr><tr><td>タイムゾーン・言語設定</td><td>UI / AI 出力の現地化、正確な時刻記録</td></tr><tr><td>かけら・写真</td><td>サービスの中核機能(ジャーナリング・AI レイヤー)の提供</td></tr><tr><td>AI 呼び出しメタデータ</td><td>利用量集計、クレジット計算、障害診断</td></tr><tr><td>サブスクリプション状態</td><td>権利確認、有効なサブスク中のアカウント削除ブロック</td></tr></tbody></table>
+    <p>これらの目的を超えて利用する場合は、事前に同意を取得します。</p>
+    <h2 id="s3">3. 保有期間</h2>
+    <ul><li>アカウントが有効な間、保有します。</li><li>アプリ内の「アカウント完全削除」を実行すると、<strong>直ちに</strong>以下を削除します:</li></ul>
+    <p>  - Firebase Authentication 利用者   - Firestore のすべての利用者ドキュメント、かけら、写真メタデータ、AI レイヤー、クレジット履歴   - Storage 内の添付写真・音声ファイル</p>
+    <ul><li>有効なサブスクリプションがある場合、削除はブロックされ、利用者は先に App Store / Google Play でサブスクをキャンセルする必要があります。</li><li>法令上の保存義務がある情報(例: 特定商取引法に基づく取引記録)は、所定の期間のみ分離保管した上で廃棄します。</li></ul>
+    <h2 id="s4">4. 第三者提供および委託</h2>
+    <p>当社は利用者の個人情報を<strong>第三者に販売しません。</strong> 本サービスを運営するため、以下の処理者にのみ限定的に委託・移転します。</p>
+    <table><thead><tr><th>委託先</th><th>業務内容</th><th>提供項目</th><th>所在国</th></tr></thead><tbody><tr><td>Google LLC (Firebase)</td><td>認証・データベース・ファイル保管・サーバーレス関数</td><td>UID、メール、かけら、写真、AI ログ</td><td>米国 (us-central1)</td></tr><tr><td>Google LLC (Gemini API)</td><td>AI レイヤー生成</td><td>レイヤー生成時に限り、利用者のテキスト</td><td>米国</td></tr><tr><td>RevenueCat, Inc.</td><td>サブスクリプション状態管理</td><td>UID、商品 ID、満了時刻</td><td>米国</td></tr><tr><td>Apple Inc. / Google LLC</td><td>アプリ内課金処理</td><td>決済情報(各社方針に従う)</td><td>各社</td></tr></tbody></table>
+    <p>各処理者のプライバシーポリシー:</p>
+    <ul><li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li><li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy</a></li><li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy</a></li></ul>
+    <h2 id="s5">5. 個人情報の越境移転</h2>
+    <p>当社は、本サービス提供のため、利用者の個人情報を米国に所在する Google Cloud(<code>us-central1</code> リージョン)に移転・保管します。本ポリシーへの同意により、当該越境移転に同意したものとみなします。</p>
+    <table><thead><tr><th>移転先</th><th>移転先国</th><th>移転日時</th><th>移転項目</th><th>利用目的</th><th>保有期間</th></tr></thead><tbody><tr><td>Google LLC (Firebase)</td><td>米国</td><td>加入・利用時の常時</td><td>第1条記載の全項目</td><td>データベース・認証・保管</td><td>アカウント削除まで</td></tr><tr><td>Google LLC (Gemini API)</td><td>米国</td><td>AI レイヤー生成時</td><td>利用者のテキスト</td><td>AI 要約</td><td>API 呼び出し後保持しない</td></tr></tbody></table>
+    <h2 id="s6">6. 利用者の権利</h2>
+    <p>利用者は以下の権利を有します:</p>
+    <ul><li><strong>開示</strong>: アプリ内ですべてのかけら・レイヤーを閲覧可能</li><li><strong>訂正</strong>: アプリ内編集機能で直接修正(Today / Archive タブ)</li><li><strong>削除</strong>: 個別の削除、または Account 画面の「アカウント完全削除」で一括削除</li><li><strong>利用停止・反対</strong>: mrbigcho@gmail.com までご連絡</li><li><strong>データポータビリティ</strong>: mrbigcho@gmail.com までご連絡いただければ JSON 形式で提供</li></ul>
+    <p>権利行使は本人または法定代理人が行えます。</p>
+    <h2 id="s7">7. 安全管理措置</h2>
+    <p>当社は以下の技術的・組織的安全管理措置を実施します:</p>
+    <ul><li>すべての通信を TLS 1.2 以上で暗号化</li><li>Firebase App Check による未認可クライアントの遮断</li><li>Firestore Security Rules による本人データのみのアクセス制限</li><li>認証トークンの端末セキュアストレージ保管</li><li>パスワードは Firebase Authentication 側で一方向ハッシュ保存(当社は平文を保有しません)</li></ul>
+    <h2 id="s8">8. 子どもの個人情報</h2>
+    <p>本サービスは13歳未満(各管轄の同等年齢、例: 韓国14歳、一部 EU 諸国 16歳)を主な対象としていません。これら年齢未満の子どもから故意に個人情報を取得することはありません。万一取得していたことが判明した場合、mrbigcho@gmail.com 宛てにご連絡いただければ直ちに削除します。</p>
+    <h2 id="s9">9. 自動化された意思決定</h2>
+    <p>本サービスの AI レイヤー(layer 生成)は、Google の Gemini モデルを用いた自動生成結果です。利用者の記録に基づく観察的な要約であり、<strong>医療・心理・法律・財務等の専門的助言の代替ではありません。</strong></p>
+    <h2 id="s10">10. 個人情報保護管理者</h2>
+    <table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>個人情報保護管理者</td><td>Cho Sang-woo</td></tr><tr><td>連絡先</td><td>mrbigcho@gmail.com / {{COMPANY_PHONE}}</td></tr><tr><td>所在地</td><td>{{COMPANY_ADDRESS}}</td></tr></tbody></table>
+    <p>個人情報の取扱いに関する苦情・相談は、上記連絡先のほか、個人情報保護委員会(https://www.ppc.go.jp/)にもお寄せいただけます。</p>
+    <h2 id="s11">11. ポリシーの変更</h2>
+    <p>本ポリシーを変更する場合、適用日の7日前までにアプリ内およびウェブサイトでお知らせします。重大な変更については適用日の30日前までに告知し、必要に応じて改めて同意を取得します。</p>
+    <h2 id="s12">改訂履歴</h2>
+    <table><thead><tr><th>バージョン</th><th>施行日</th><th>変更内容</th></tr></thead><tbody><tr><td>v1.0</td><td>2026-04-29</td><td>初版施行</td></tr></tbody></table>
+
+    <footer class="page-foot">
+      <p>© 2026 Dongne · <a href="../../index.html">法的告知一覧</a> · <a href="terms.html">利用規約</a></p>
+    </footer>
+  </div>
+</body>
+</html>
