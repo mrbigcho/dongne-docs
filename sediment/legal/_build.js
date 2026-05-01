@@ -201,6 +201,7 @@ const LABEL = {
   ko: {
     privacyTitle: '개인정보처리방침',
     termsTitle:   '이용약관',
+    deleteTitle:  '계정 삭제',
     brand:        'Sediment',
     effectivePrefix: '시행일자: ',
     draftStrong:  '초안 안내',
@@ -211,6 +212,7 @@ const LABEL = {
   en: {
     privacyTitle: 'Privacy Policy',
     termsTitle:   'Terms of Service',
+    deleteTitle:  'Account Deletion',
     brand:        'Sediment',
     effectivePrefix: 'Effective date: ',
     draftStrong:  'Draft notice',
@@ -221,6 +223,7 @@ const LABEL = {
   ja: {
     privacyTitle: 'プライバシーポリシー',
     termsTitle:   '利用規約',
+    deleteTitle:  'アカウント削除',
     brand:        'Sediment',
     effectivePrefix: '施行日: ',
     draftStrong:  '草案のお知らせ',
@@ -250,9 +253,30 @@ function effectiveLabel(locale) {
   }
 }
 
+function titleFor(type, L) {
+  switch (type) {
+    case 'privacy': return L.privacyTitle;
+    case 'terms':   return L.termsTitle;
+    case 'delete':  return L.deleteTitle;
+  }
+}
+
+// 푸터에 보여줄 다른 두 문서로의 링크
+function crossLinks(type, L) {
+  const all = [
+    { type: 'privacy', label: L.privacyTitle },
+    { type: 'terms',   label: L.termsTitle },
+    { type: 'delete',  label: L.deleteTitle },
+  ];
+  return all
+    .filter((x) => x.type !== type)
+    .map((x) => `<a href="${x.type}.html">${x.label}</a>`)
+    .join(' · ');
+}
+
 function buildPage({ type, locale, h1, body }) {
   const L = LABEL[locale];
-  const title = type === 'privacy' ? L.privacyTitle : L.termsTitle;
+  const title = titleFor(type, L);
   return `<!DOCTYPE html>
 <html lang="${locale}">
 <head>
@@ -278,7 +302,7 @@ function buildPage({ type, locale, h1, body }) {
     ${body}
 
     <footer class="page-foot">
-      <p>${L.footnote} · <a href="${type === 'privacy' ? 'terms.html' : 'privacy.html'}">${type === 'privacy' ? L.termsTitle : L.privacyTitle}</a></p>
+      <p>${L.footnote} · ${crossLinks(type, L)}</p>
     </footer>
   </div>
 </body>
@@ -287,7 +311,7 @@ function buildPage({ type, locale, h1, body }) {
 }
 
 // ─── 빌드 ───
-const TYPES = ['privacy', 'terms'];
+const TYPES = ['privacy', 'terms', 'delete'];
 const LOCALES = ['ko', 'en', 'ja'];
 
 let count = 0;
