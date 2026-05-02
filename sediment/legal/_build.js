@@ -2,8 +2,8 @@
 /**
  * Sediment legal builder.
  *
- * Source: ~/Projects/sediment/docs/legal/{privacy,terms}.{ko,en,ja}.md
- * Target: ~/Projects/dongne-docs/sediment/legal/{ko,en,ja}/{privacy,terms}.html
+ * Source: ./_src/{privacy,terms,delete}.{ko,en,ja}.md
+ * Target: ./{ko,en,ja}/{privacy,terms,delete}.html
  *
  * Run after editing the source markdown:
  *   node sediment/legal/_build.js
@@ -13,29 +13,41 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const SRC = path.join(os.homedir(), 'Projects/sediment/docs/legal');
+const SRC = path.join(__dirname, '_src');
 const OUT = __dirname;
 
 // ─── 자리표시자 치환 ───
 const SHARED = {
-  COMPANY_NAME:       'Dongne',
-  REPRESENTATIVE:     'Cho Sang-woo',
   SUPPORT_EMAIL:      'mrbigcho@gmail.com',
   LEGAL_EMAIL:        'mrbigcho@gmail.com',
-  HOSTING_PROVIDER:   'Firebase Hosting (Google LLC)',
-  EFFECTIVE_DATE:     '2026-04-29',
-  LAST_UPDATED:       '2026-04-29',
-  // 미정 — 사업자 등록 후 채울 것
-  COMPANY_ADDRESS:    '{{COMPANY_ADDRESS}}',
-  COMPANY_PHONE:      '{{COMPANY_PHONE}}',
-  BUSINESS_REG_NUM:   '{{BUSINESS_REG_NUM}}',
-  ECOMMERCE_REG_NUM:  '{{ECOMMERCE_REG_NUM}}',
+  HOSTING_PROVIDER:   'GitHub Pages (GitHub, Inc.) · Firebase Hosting (Google LLC)',
+  EFFECTIVE_DATE:     '2026-05-02',
+  LAST_UPDATED:       '2026-05-02',
+  COMPANY_ADDRESS:    '1205-701, 107, Manhyeon-ro, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea',
+  COMPANY_PHONE:      '+82-10-3445-4048',
+  BUSINESS_REG_NUM:   '594-09-03558',
+  ECOMMERCE_REG_NUM:  '제 2026-용인수지-1967 호',
 };
 
 const LOCALE_VARS = {
-  ko: { GOVERNING_LAW: '대한민국',         JURISDICTION: '서울중앙지방법원' },
-  en: { GOVERNING_LAW: 'Republic of Korea', JURISDICTION: 'Seoul Central District Court' },
-  ja: { GOVERNING_LAW: '大韓民国',          JURISDICTION: 'ソウル中央地方法院' },
+  ko: {
+    COMPANY_NAME:   '동네',
+    REPRESENTATIVE: '조상우',
+    GOVERNING_LAW:  '대한민국',
+    JURISDICTION:   '서울중앙지방법원',
+  },
+  en: {
+    COMPANY_NAME:   'DongNe',
+    REPRESENTATIVE: 'Sangwoo Cho',
+    GOVERNING_LAW:  'Republic of Korea',
+    JURISDICTION:   'Seoul Central District Court',
+  },
+  ja: {
+    COMPANY_NAME:   'DongNe',
+    REPRESENTATIVE: 'Sangwoo Cho',
+    GOVERNING_LAW:  '大韓民国',
+    JURISDICTION:   'ソウル中央地方法院',
+  },
 };
 
 function substitute(text, locale) {
