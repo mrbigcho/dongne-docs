@@ -216,8 +216,6 @@ const LABEL = {
     deleteTitle:  '계정 삭제',
     brand:        'Sediment',
     effectivePrefix: '시행일자: ',
-    draftStrong:  '초안 안내',
-    draftBody:    '본 문서는 작업 중인 초안이며, 법률 전문가의 검토를 받지 않았습니다. 실제 서비스에 적용하기 전 법무 검토를 받을 것을 강하게 권장합니다.',
     footnote:     '© 2026 Dongne · <a href="../../index.html">법적 고지 목차</a>',
     langLabels:   { ko: '한국어', en: 'English', ja: '日本語' },
   },
@@ -227,8 +225,6 @@ const LABEL = {
     deleteTitle:  'Account Deletion',
     brand:        'Sediment',
     effectivePrefix: 'Effective date: ',
-    draftStrong:  'Draft notice',
-    draftBody:    'This document is a working draft and has not been reviewed by legal counsel. Operators should obtain professional review before relying on it for compliance.',
     footnote:     '© 2026 Dongne · <a href="../../index.html">Legal index</a>',
     langLabels:   { ko: '한국어', en: 'English', ja: '日本語' },
   },
@@ -238,8 +234,6 @@ const LABEL = {
     deleteTitle:  'アカウント削除',
     brand:        'Sediment',
     effectivePrefix: '施行日: ',
-    draftStrong:  '草案のお知らせ',
-    draftBody:    '本書は作成中の草案であり、法律専門家の確認を受けていません。実際のサービスに適用する前に法務確認を受けることを強く推奨します。',
     footnote:     '© 2026 Dongne · <a href="../../index.html">法的告知一覧</a>',
     langLabels:   { ko: '한국어', en: 'English', ja: '日本語' },
   },
@@ -305,11 +299,6 @@ function buildPage({ type, locale, h1, body }) {
       <p class="meta">${effectiveLabel(locale)}</p>
       <p class="lang-switch">${langSwitch(locale, type)}</p>
     </header>
-
-    <div class="notice">
-      <strong>${L.draftStrong}</strong>
-      ${L.draftBody}
-    </div>
 
     ${body}
 
