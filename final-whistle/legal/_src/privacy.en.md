@@ -26,10 +26,15 @@ By using the Service you agree to the practices described here. If you do not ag
 - **Tournament & club data** — clubs you create or join, tournaments you organize or enter, match results, disputes, admin rulings
 - **Participation records** — club memberships, tournament entries, posted comments
 - **Shared scoreboard access logs** — aggregated traffic on shared links
+- **Purchase records** — Apple/Google IAP receipt identifiers, transaction time, club/membership applied (we do not store payment instruments such as card numbers or bank accounts; those remain with Apple/Google)
 
-We do **not** use cookies, advertising identifiers, third-party trackers, or App Tracking Transparency tracking. The usage events collected by Firebase Analytics are anonymized and do not constitute "tracking" as defined by Apple's App Tracking Transparency framework (i.e., we do not link your activity to data from other companies' apps or websites for targeted advertising).
+### 1.4 Advertising data (free users only)
+- **Advertising identifier (IDFA / AAID)** — used by Google AdMob for ad delivery, deduplication, and fraud prevention.
+- **Device & app context** — OS version, device model, app language, ad impression and click events.
+- On iOS we request consent through the **App Tracking Transparency** dialog; if you decline, only non-personalized ads are shown. EU/EEA residents see the **Google UMP (User Messaging Platform)** consent form.
+- **Plus members do not see ads, and the advertising data above is not collected for them.**
 
-We do **not** collect: precise location, health or medical data, financial account numbers, contact lists, photos outside what you actively upload, or advertising identifiers (IDFA, AAID).
+We do **not** collect: precise location, health or medical data, financial account numbers, contact lists, or photos outside what you actively upload.
 
 ---
 
@@ -44,8 +49,10 @@ We do **not** collect: precise location, health or medical data, financial accou
 | User content (clubs, tournaments, results) | Core service functionality |
 | FCM token | Send push notifications (your turn, results posted, etc.) |
 | Usage events, diagnostic data | Service improvement, crash diagnosis |
+| Purchase records | Verify active club pass / Plus, handle refunds and inquiries, accounting |
+| IDFA/AAID, ad impression events | Show AdMob ads to free (non-Plus) users, deduplicate, prevent fraud |
 
-We do not use your data for any purpose beyond those listed above. We do not sell or share personal information for behavioral advertising.
+We do not use your data for any purpose beyond those listed above. We do not use your club/tournament content for behavioral advertising or sell it externally (advertising relies solely on the IDFA/AAID and impression events Google AdMob collects on its own).
 
 ---
 
@@ -70,12 +77,16 @@ We do **not sell** your personal data. We share it only with the following proce
 | Processor | Purpose | Data Shared | Region |
 |---|---|---|---|
 | Google LLC (Firebase) | Authentication, Crashlytics, Analytics, Cloud Messaging | UID, email, diagnostic data, push tokens, anonymized usage events | United States |
+| Google LLC (AdMob, UMP) | Ad delivery, deduplication, fraud prevention, consent management for free users | IDFA/AAID, ad impression and click events, OS, device model, app language | United States |
+| Apple Inc. (App Store) | iOS IAP processing and receipt validation | Apple ID receipt, transaction ID, subscription status | Per Apple policy |
 | Apple Inc. | Sign in with Apple, push delivery via APNs | Apple ID identifier, push token | Per Apple policy |
-| Railway Corp. | Backend server hosting | User content (clubs, tournaments, results) | United States |
+| Google LLC (Play Billing) | Android IAP processing and receipt validation | Purchase token, transaction ID, subscription status | United States |
+| Railway Corp. | Backend server hosting | User content (clubs, tournaments, results), purchase audit | United States |
 | Cloudflare, Inc. | Flutter Web static hosting / CDN | Anonymized request logs | Global edge |
 
 Each processor's privacy policy:
 - [Google Privacy Policy](https://policies.google.com/privacy)
+- [Google AdMob ad data](https://support.google.com/admob/answer/6128543)
 - [Apple Privacy](https://www.apple.com/legal/privacy/)
 - [Railway Privacy](https://railway.com/legal/privacy)
 - [Cloudflare Privacy](https://www.cloudflare.com/privacypolicy/)
@@ -86,7 +97,15 @@ Content you publish in a public club or tournament (match results, standings, pa
 
 ## 5. International Transfers
 
-Your data is processed on infrastructure located in the United States (Google Cloud, Railway). When you use the Service, you consent to this transfer.
+Your data is processed on infrastructure located in the United States (Google Cloud, Google AdMob, Apple App Store, Google Play, Railway). When you use the Service, you consent to this transfer.
+
+| Recipient | Country | When | Data | Purpose | Retention |
+|---|---|---|---|---|---|
+| Google LLC (Firebase) | United States | Continuous from sign-up | All items in §1 | Auth, diagnostics, push, analytics | Until account deletion |
+| Google LLC (AdMob) | United States | When a free user views an ad-supported screen | IDFA/AAID, ad impression / click events | Ad delivery, deduplication, fraud prevention | Per Google policy |
+| Apple Inc. / Google LLC (Play) | United States | On IAP purchase / receipt validation | Transaction ID, receipt, subscription status | Payment processing | Statutory accounting / dispute periods |
+| Railway Corp. | United States | Continuous during use | User content, purchase audit | Backend storage / compute | Until account deletion |
+| Cloudflare, Inc. | Global edge | On web access | IP, request metadata | CDN caching, DDoS mitigation | Within 30 days |
 
 For users in the EEA, UK, and Switzerland: we rely on Standard Contractual Clauses (SCCs) approved by the European Commission as the lawful basis for the transfer of your personal data outside your jurisdiction.
 
@@ -104,7 +123,7 @@ You have the right to:
 
 We respond to requests within 30 days. If you are dissatisfied with our response, you may file a complaint with your local data protection authority.
 
-For California residents (CCPA): you also have the right to know what personal data we have collected, the categories of sources, the purposes, and the categories of recipients. We do **not** sell your personal information.
+For California residents (CCPA / CPRA): you have the right to know, delete, correct, and limit use of sensitive personal information. We do **not** sell your club/tournament content for behavioral advertising; however, IDFA/AAID may be **shared** with Google LLC during ad delivery (which qualifies as "sharing" under CCPA). You can opt out of ad tracking by declining iOS App Tracking Transparency, resetting/deleting the Android advertising ID, or upgrading to Plus (no ads at all).
 
 For EEA / UK / Swiss residents (GDPR): the lawful bases for our processing are:
 - **Contract** (Art. 6(1)(b)) — providing the Service you signed up for
@@ -156,3 +175,4 @@ If we change this Policy, we will post the updated version inside the app or not
 | Version | Effective | Changes |
 |---|---|---|
 | v1.0 | {{EFFECTIVE_DATE}} | Initial release |
+| v1.1 | {{LAST_UPDATED}} | Introduced AdMob ads for free users (IDFA/AAID collection with ATT/UMP consent); added IAP payment data and international transfers |
