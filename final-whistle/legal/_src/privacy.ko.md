@@ -81,14 +81,18 @@
 | Apple Inc. (App Store) | iOS IAP 결제 처리·영수증 검증 | Apple ID 영수증, 거래 식별자, 구독 상태 | Apple 자체 정책에 따름 |
 | Apple Inc. | Sign in with Apple, APNs 푸시 발송 | Apple ID 식별자, 푸시 토큰 | Apple 자체 정책에 따름 |
 | Google LLC (Play Billing) | Android IAP 결제 처리·영수증 검증 | 구매 토큰, 거래 식별자, 구독 상태 | 미국 |
-| Railway Corp. | 백엔드 서버 호스팅 | 이용자 콘텐츠 (클럽·대회·결과), 결제 audit 로그 | 미국 |
+| RevenueCat, Inc. | IAP 영수증 검증·구독 상태 추적·이벤트 webhook | 식별자(우리 프로필 ID), Apple/Google 거래 식별자, 구독 활성 상태, 지역·언어 정보 | 미국 |
+| Railway Corp. | 백엔드 컨테이너 호스팅 | 백엔드 애플리케이션 트래픽·로그, 결제 audit 로그 | 미국 |
+| Supabase, Inc. | PostgreSQL DB 호스팅 (이용자 데이터 저장) | 본 방침 1조의 모든 항목 | 한국 (ap-northeast-2) |
 | Cloudflare, Inc. | Flutter Web 정적 호스팅·CDN | 비식별 접속 로그 | 글로벌 엣지 |
 
 각 처리자의 개인정보 처리 정책은 다음에서 확인할 수 있습니다:
 - [Google 개인정보처리방침](https://policies.google.com/privacy)
 - [Google AdMob 광고 데이터 처리](https://support.google.com/admob/answer/6128543)
 - [Apple Privacy](https://www.apple.com/legal/privacy/)
+- [RevenueCat Privacy](https://www.revenuecat.com/privacy/)
 - [Railway Privacy](https://railway.com/legal/privacy)
+- [Supabase Privacy](https://supabase.com/privacy)
 - [Cloudflare Privacy](https://www.cloudflare.com/privacypolicy/)
 
 공개 클럽·대회에서 작성한 콘텐츠(매치 결과, 순위표, 참가자 목록 등)는 다른 참가자 및 공유된 링크 수신자에게 노출됩니다. 비공개 클럽·대회에서는 초대된 멤버에게만 노출됩니다.
@@ -97,14 +101,15 @@
 
 ## 5. 개인정보의 국외 이전
 
-회사는 서비스 제공을 위해 이용자의 개인정보를 미국에 위치한 Google Cloud, Railway 인프라로 이전·저장합니다. 본 처리방침에 동의함으로써 해당 국외 이전에 동의한 것으로 봅니다.
+회사는 서비스 제공을 위해 이용자의 개인정보를 미국(Google Cloud · AdMob · Apple App Store · Google Play · RevenueCat · Railway) 인프라로 이전·저장합니다. DB 자체는 한국(Supabase ap-northeast-2 region)에 위치합니다. 본 처리방침에 동의함으로써 해당 국외 이전에 동의한 것으로 봅니다.
 
 | 이전받는 자 | 이전 국가 | 이전 일시 | 이전 항목 | 이용 목적 | 보유 기간 |
 |---|---|---|---|---|---|
 | Google LLC (Firebase) | 미국 | 가입·서비스 이용 시 상시 | 본 방침 1조의 모든 항목 | 인증·진단·푸시·분석 | 계정 삭제 시까지 |
 | Google LLC (AdMob) | 미국 | Plus 미가입자가 광고 노출 화면 진입 시 | IDFA/AAID, 광고 노출·클릭 이벤트 | 광고 노출·중복 차단·사기 방지 | Google 정책에 따름 |
 | Apple Inc. / Google LLC (Play) | 미국 | IAP 결제·영수증 검증 시 | 거래 식별자, 영수증, 구독 상태 | 결제 처리 | 회계·분쟁 의무 기간 |
-| Railway Corp. | 미국 | 서비스 이용 시 상시 | 이용자 콘텐츠, 결제 audit | 백엔드 데이터 저장·연산 | 계정 삭제 시까지 |
+| RevenueCat, Inc. | 미국 | IAP 결제·갱신·해지·환불 발생 시 | 프로필 ID, 거래 식별자, 구독 활성 상태, 지역·언어 | IAP 영수증 검증·구독 상태 추적·이벤트 webhook | 계정 삭제 시까지 |
+| Railway Corp. | 미국 | 서비스 이용 시 상시 | 백엔드 트래픽·로그 | 컨테이너 호스팅 | 계정 삭제 시까지 |
 | Cloudflare, Inc. | 글로벌 엣지 | 웹 접속 시 | IP·요청 메타데이터 | CDN 캐싱·DDoS 방지 | 30일 이내 |
 
 EEA·영국 등 국외 이전에 제한이 있는 지역의 경우 유럽연합 집행위원회의 표준계약조항(SCC) 등 적법한 보호 장치를 적용합니다.
@@ -183,3 +188,4 @@ GDPR 제6조에 따른 처리의 적법 근거는 다음과 같습니다:
 |---|---|---|
 | v1.0 | {{EFFECTIVE_DATE}} | 최초 시행 |
 | v1.1 | {{LAST_UPDATED}} | Plus 미가입자 대상 AdMob 광고 도입 (IDFA/AAID 수집, ATT/UMP 동의), IAP 결제 정보 수집·국외이전 항목 추가 |
+| v1.2 | {{LAST_UPDATED}} | RevenueCat (IAP 영수증 검증·구독 상태 추적) + Supabase (DB 호스팅) 처리자 명시 |

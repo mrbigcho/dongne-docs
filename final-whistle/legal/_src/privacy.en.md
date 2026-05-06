@@ -81,14 +81,18 @@ We do **not sell** your personal data. We share it only with the following proce
 | Apple Inc. (App Store) | iOS IAP processing and receipt validation | Apple ID receipt, transaction ID, subscription status | Per Apple policy |
 | Apple Inc. | Sign in with Apple, push delivery via APNs | Apple ID identifier, push token | Per Apple policy |
 | Google LLC (Play Billing) | Android IAP processing and receipt validation | Purchase token, transaction ID, subscription status | United States |
-| Railway Corp. | Backend server hosting | User content (clubs, tournaments, results), purchase audit | United States |
+| RevenueCat, Inc. | IAP receipt validation, subscription state tracking, event webhooks | Identifier (our profile ID), Apple/Google transaction IDs, subscription active status, locale and country | United States |
+| Railway Corp. | Backend container hosting | Backend traffic and logs, purchase audit logs | United States |
+| Supabase, Inc. | PostgreSQL DB hosting (stores all user data) | All items in §1 | South Korea (ap-northeast-2) |
 | Cloudflare, Inc. | Flutter Web static hosting / CDN | Anonymized request logs | Global edge |
 
 Each processor's privacy policy:
 - [Google Privacy Policy](https://policies.google.com/privacy)
 - [Google AdMob ad data](https://support.google.com/admob/answer/6128543)
 - [Apple Privacy](https://www.apple.com/legal/privacy/)
+- [RevenueCat Privacy](https://www.revenuecat.com/privacy/)
 - [Railway Privacy](https://railway.com/legal/privacy)
+- [Supabase Privacy](https://supabase.com/privacy)
 - [Cloudflare Privacy](https://www.cloudflare.com/privacypolicy/)
 
 Content you publish in a public club or tournament (match results, standings, participant lists) is visible to other participants and to anyone with the shared scoreboard link. Private clubs and tournaments are visible only to invited members.
@@ -97,14 +101,15 @@ Content you publish in a public club or tournament (match results, standings, pa
 
 ## 5. International Transfers
 
-Your data is processed on infrastructure located in the United States (Google Cloud, Google AdMob, Apple App Store, Google Play, Railway). When you use the Service, you consent to this transfer.
+Your data is processed on infrastructure located in the United States (Google Cloud, Google AdMob, Apple App Store, Google Play, RevenueCat, Railway) and South Korea (Supabase ap-northeast-2). When you use the Service, you consent to this transfer.
 
 | Recipient | Country | When | Data | Purpose | Retention |
 |---|---|---|---|---|---|
 | Google LLC (Firebase) | United States | Continuous from sign-up | All items in §1 | Auth, diagnostics, push, analytics | Until account deletion |
 | Google LLC (AdMob) | United States | When a free user views an ad-supported screen | IDFA/AAID, ad impression / click events | Ad delivery, deduplication, fraud prevention | Per Google policy |
 | Apple Inc. / Google LLC (Play) | United States | On IAP purchase / receipt validation | Transaction ID, receipt, subscription status | Payment processing | Statutory accounting / dispute periods |
-| Railway Corp. | United States | Continuous during use | User content, purchase audit | Backend storage / compute | Until account deletion |
+| RevenueCat, Inc. | United States | On IAP purchase, renewal, cancellation, refund | Profile ID, transaction ID, subscription active status, locale, country | IAP receipt validation, subscription tracking, event webhooks | Until account deletion |
+| Railway Corp. | United States | Continuous during use | Backend traffic and logs | Container hosting | Until account deletion |
 | Cloudflare, Inc. | Global edge | On web access | IP, request metadata | CDN caching, DDoS mitigation | Within 30 days |
 
 For users in the EEA, UK, and Switzerland: we rely on Standard Contractual Clauses (SCCs) approved by the European Commission as the lawful basis for the transfer of your personal data outside your jurisdiction.
@@ -176,3 +181,4 @@ If we change this Policy, we will post the updated version inside the app or not
 |---|---|---|
 | v1.0 | {{EFFECTIVE_DATE}} | Initial release |
 | v1.1 | {{LAST_UPDATED}} | Introduced AdMob ads for free users (IDFA/AAID collection with ATT/UMP consent); added IAP payment data and international transfers |
+| v1.2 | {{LAST_UPDATED}} | Added RevenueCat (IAP receipt validation and subscription state tracking) and Supabase (DB hosting) as data processors |

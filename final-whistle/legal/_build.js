@@ -22,7 +22,7 @@ const SHARED = {
   LEGAL_EMAIL:        'mrbigcho@gmail.com',
   HOSTING_PROVIDER:   'GitHub Pages (GitHub, Inc.) · Cloudflare Pages (Cloudflare, Inc.) · Railway Corp.',
   EFFECTIVE_DATE:     '2026-05-02',
-  LAST_UPDATED:       '2026-05-02',
+  LAST_UPDATED:       '2026-05-07',
   COMPANY_ADDRESS:    '1205-701, 107, Manhyeon-ro, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea',
   COMPANY_PHONE:      '+82-10-3445-4048',
   BUSINESS_REG_NUM:   '594-09-03558',
