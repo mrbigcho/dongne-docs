@@ -47,9 +47,9 @@ node sediment/legal/_build.js
 
 이 저장소는 GitHub Pages 로 서빙됩니다.
 
-- 메인 페이지: `https://mrbigcho.github.io/dongne-docs/`
-- Sediment 약관 (ko): `https://mrbigcho.github.io/dongne-docs/sediment/legal/ko/privacy.html`
-- Final Whistle 약관 (ko): `https://mrbigcho.github.io/dongne-docs/final-whistle/legal/ko/privacy.html`
+- 메인 페이지: `https://docs.dongne.dev/`
+- Sediment 약관 (ko): `https://docs.dongne.dev/sediment/legal/ko/privacy.html`
+- Final Whistle 약관 (ko): `https://docs.dongne.dev/final-whistle/legal/ko/privacy.html`
 
 각 앱에서 약관 화면을 열 때 위 URL 로 외부 링크를 띄웁니다.
 
