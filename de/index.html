@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dongne — 小さなスタジオ</title>
-  <meta name="description" content="静かに、ゆっくりとつくるソフトウェア。Sediment と Final Whistle の本拠地。">
+  <title>Dongne — ein kleines Studio</title>
+  <meta name="description" content="Dongne ist ein kleines Studio für leise, sorgfältig gemachte Software. Zuhause von Sediment und Final Whistle.">
   <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/">
   <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/ko/">
   <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/ja/">
@@ -29,7 +29,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0; background: var(--bg); color: var(--fg);
-      font-family: 'Newsreader', 'Iowan Old Style', Georgia, 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
       line-height: 1.7; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
       min-height: 100vh;
       background-image:
@@ -80,11 +80,11 @@
     .hero h1 .ko {
       display: block; font-style: normal; font-weight: 400; font-size: 0.32em;
       letter-spacing: 0.08em; color: var(--muted); margin-top: 18px;
-      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      font-family: 'Newsreader', 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
     }
     .hero .lede {
-      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
-      font-size: 19px; line-height: 1.7; max-width: 30em; color: var(--fg); margin: 0;
+      font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.55;
+      max-width: 32em; color: var(--fg); margin: 0;
     }
     .hero .lede em {
       font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent);
@@ -126,7 +126,7 @@
       font-size: 16px; color: var(--muted); margin: 0 0 14px;
     }
     .project .body p {
-      margin: 0 0 14px; font-size: 15.5px; line-height: 1.75; color: var(--fg); max-width: 38em;
+      margin: 0 0 14px; font-size: 15.5px; line-height: 1.65; color: var(--fg); max-width: 38em;
     }
     .project .body .links {
       list-style: none; padding: 0; margin: 6px 0 0;
@@ -150,33 +150,6 @@
     }
     .project .body .links a:hover { color: var(--fg); border-bottom-color: var(--fg); }
 
-    .project .body .store-row {
-      display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; position: relative; z-index: 2;
-    }
-    .store-badge {
-      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px;
-      border: 1px solid var(--line); border-radius: 10px;
-      background: var(--bg); color: var(--fg); text-decoration: none;
-      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-    }
-    .store-badge:hover {
-      border-color: var(--whistle); background: rgba(91,84,217,0.04); transform: translateY(-1px);
-    }
-    @media (prefers-color-scheme: dark) {
-      .store-badge:hover { background: rgba(157,151,255,0.08); }
-    }
-    .store-badge .glyph { width: 18px; height: 18px; flex-shrink: 0; color: var(--whistle); }
-    .store-badge .label {
-      display: flex; flex-direction: column; line-height: 1.1;
-      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
-    }
-    .store-badge .label .small {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 2px;
-    }
-    .store-badge .label .big { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
-
     .project .arrow {
       align-self: center; font-family: 'Fraunces', Georgia, serif; font-size: 28px;
       color: var(--muted); opacity: 0.4;
@@ -197,7 +170,7 @@
     footer a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     footer .colophon {
       font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 13px;
-      letter-spacing: 0; text-transform: none; color: var(--muted); max-width: 24em;
+      letter-spacing: 0; text-transform: none; color: var(--muted); max-width: 26em;
     }
 
     @media (max-width: 640px) {
@@ -216,39 +189,39 @@
 
     <header class="masthead">
       <div class="mark"><span class="dot"></span>Dongne · Studio</div>
-      <nav class="lang-nav" aria-label="言語">
+      <nav class="lang-nav" aria-label="Sprache">
         <a href="../ko/" hreflang="ko" data-lang-switch="ko">KO</a>
         <span class="sep">·</span>
         <a href="../" hreflang="en" data-lang-switch="en">EN</a>
         <span class="sep">·</span>
-        <span class="current">JA</span>
+        <a href="../ja/" hreflang="ja" data-lang-switch="ja">JA</a>
         <span class="sep">·</span>
         <a href="../zh-Hant/" hreflang="zh-Hant" data-lang-switch="zh-Hant">繁中</a>
         <span class="sep">·</span>
-        <a href="../de/" hreflang="de" data-lang-switch="de">DE</a>
+        <span class="current">DE</span>
       </nav>
-      <a class="meta-link" href="mailto:mrbigcho@gmail.com">お問い合わせ</a>
+      <a class="meta-link" href="mailto:mrbigcho@gmail.com">Kontakt</a>
     </header>
 
     <section class="hero">
       <h1>
-        Dongne<span class="ko">동네 — 静かな路地に、いくつかの良い扉。</span>
+        Dongne<span class="ko">동네 — eine stille Gasse, ein paar gute Türen</span>
       </h1>
       <p class="lede">
-        静かに、<em>ゆっくりと</em>つくるソフトウェア。自分たちのために、そして近くにいる人のための、ささやかなアプリをいくつか。ワンシーズン、ワンクラブ、一冊のノートずつ。
+        Ein kleines Studio für Software, die <em>ohne Eile</em> entsteht — ein paar Apps für uns selbst, und für die Menschen in der Nähe. Eine Saison, ein Verein, ein Heft nach dem anderen.
       </p>
     </section>
 
     <section>
-      <p class="projects-label">— つくっているもの</p>
+      <p class="projects-label">— Was wir machen</p>
 
       <article class="project" data-id="sediment">
-        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Sediment を見る">Sediment</a>
+        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Sediment besuchen">Sediment</a>
         <div class="num">01</div>
         <div class="body">
           <h2><span class="swatch"></span>Sediment</h2>
-          <p class="kicker">静かなアーカイブ — 沈んだものは、残る。</p>
-          <p>一日に小さな問いをひとつだけ尋ねて、残りはそのまま流す日記。圧は軽く、記憶は長く。</p>
+          <p class="kicker">Ein stilles Archiv — was sich setzt, bleibt.</p>
+          <p>Ein Tagebuch, das eine kleine Frage stellt und den Rest des Tages vorüberziehen lässt. Wenig Druck, langes Gedächtnis.</p>
           <ul class="links">
             <li><span class="primary">sediment.dongne.dev</span></li>
           </ul>
@@ -257,14 +230,14 @@
       </article>
 
       <article class="project" data-id="whistle">
-        <a class="project__cover" href="../final-whistle/ja/" aria-label="Final Whistle について">Final Whistle</a>
+        <a class="project__cover" href="../final-whistle/" aria-label="Über Final Whistle">Final Whistle</a>
         <div class="num">02</div>
         <div class="body">
           <h2><span class="swatch"></span>Final Whistle</h2>
-          <p class="kicker">ともに記すスコアボード。</p>
-          <p>大会を動かす人のための道具。スポーツも e スポーツも、大会・クラブ・リーグ・ファンタジーをひとつに — 対戦表は自動で組まれ、結果はひと画面に、順位はその場で。</p>
+          <p class="kicker">Die Anzeigetafel, die wir gemeinsam führen.</p>
+          <p>Ein Werkzeug für alle, die Turniere ausrichten — Sport oder E-Sport. Turnierbäume, Vereine, Ligen und Fantasy an einem Ort — automatisch ausgelost, auf einem Schirm gewertet, der Stand sofort zur Hand.</p>
           <ul class="links">
-            <li><span class="primary">詳しく見る</span></li>
+            <li><span class="primary">Mehr lesen</span></li>
           </ul>
         </div>
         <div class="arrow" aria-hidden="true">→</div>
@@ -273,7 +246,7 @@
 
     <footer>
       <span>© 2026 Dongne</span>
-      <span class="colophon">Fraunces と Newsreader。手づくり。計測なし、Cookie なし。</span>
+      <span class="colophon">Gesetzt in Fraunces &amp; Newsreader. Von Hand gemacht, keine Tracker, keine Cookies.</span>
       <a href="mailto:mrbigcho@gmail.com">mrbigcho@gmail.com</a>
     </footer>
 

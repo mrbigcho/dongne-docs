@@ -8,14 +8,18 @@
   <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/">
   <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/ko/">
   <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/ja/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.dongne.dev/zh-Hant/">
+  <link rel="alternate" hreflang="de" href="https://docs.dongne.dev/de/">
   <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/">
   <script>
     (function () {
       try {
         if (localStorage.getItem('dongne-lang')) return;
         var l = (navigator.language || '').toLowerCase();
-        if (l.indexOf('ja') === 0) location.replace('ja/');
+        if (l.indexOf('zh-tw') === 0 || l.indexOf('zh-hk') === 0 || l.indexOf('zh-hant') === 0 || l.indexOf('zh-mo') === 0) location.replace('zh-Hant/');
+        else if (l.indexOf('ja') === 0) location.replace('ja/');
         else if (l.indexOf('ko') === 0) location.replace('ko/');
+        else if (l.indexOf('de') === 0) location.replace('de/');
       } catch (e) {}
     })();
   </script>
@@ -247,6 +251,10 @@
         <span class="current">EN</span>
         <span class="sep">·</span>
         <a href="ja/" hreflang="ja" data-lang-switch="ja">JA</a>
+        <span class="sep">·</span>
+        <a href="zh-Hant/" hreflang="zh-Hant" data-lang-switch="zh-Hant">繁中</a>
+        <span class="sep">·</span>
+        <a href="de/" hreflang="de" data-lang-switch="de">DE</a>
       </nav>
       <a class="meta-link" href="mailto:mrbigcho@gmail.com">contact</a>
     </header>
@@ -256,7 +264,7 @@
         Dongne<span class="ko">동네 — a quiet street, a few good doors</span>
       </h1>
       <p class="lede">
-        A small studio making <em>careful, unhurried</em> software — a few apps for ourselves and the people nearby. We work one season, one club, one small notebook at a time.
+        A small studio making <em>careful, unhurried</em> software — a few apps for ourselves, and for the people nearby. One season, one club, one notebook at a time.
       </p>
     </section>
 
