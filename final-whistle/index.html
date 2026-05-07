@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Final Whistle — 함께 기록해 만드는 스코어보드</title>
   <meta name="description" content="Final Whistle 의 법적 문서·소개·문의 페이지. 아마추어 축구 대회·클럽·리그·판타지를 한 손에 굴리기 위한 도구입니다.">
+  <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/final-whistle/">
+  <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/final-whistle/en/">
+  <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/final-whistle/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/final-whistle/">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('dongne-lang')) return;
+        var l = (navigator.language || '').toLowerCase();
+        if (l.indexOf('ja') === 0) location.replace('ja/');
+        else if (l.indexOf('en') === 0) location.replace('en/');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -76,6 +90,20 @@
     }
     .crumbs a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     .crumbs .sep { margin: 0 8px; opacity: 0.5; }
+
+    .lang-nav {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+      display: inline-flex; gap: 8px; align-items: center;
+    }
+    .lang-nav a {
+      color: var(--muted); text-decoration: none;
+      border-bottom: 1px dashed transparent; padding-bottom: 1px;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+    .lang-nav a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+    .lang-nav .current { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+    .lang-nav .sep { opacity: 0.4; }
     /* — hero — */
     .hero { margin-bottom: 80px; }
     .wordmark {
@@ -385,6 +413,13 @@
       <p class="crumbs">
         <a href="../">docs.dongne.dev</a><span class="sep">/</span><span>Final Whistle</span>
       </p>
+      <nav class="lang-nav" aria-label="언어 전환">
+        <span class="current">KO</span>
+        <span class="sep">·</span>
+        <a href="en/" hreflang="en" data-lang-switch="en">EN</a>
+        <span class="sep">·</span>
+        <a href="ja/" hreflang="ja" data-lang-switch="ja">JA</a>
+      </nav>
     </header>
 
     <section class="hero">
@@ -495,5 +530,12 @@
     </footer>
 
   </main>
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-lang-switch]');
+      if (!a) return;
+      try { localStorage.setItem('dongne-lang', a.dataset.langSwitch); } catch (err) {}
+    });
+  </script>
 </body>
 </html>

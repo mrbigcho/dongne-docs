@@ -1,24 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dongne — 작은 스튜디오</title>
-  <meta name="description" content="조용히, 천천히 만드는 소프트웨어. Sediment 와 Final Whistle 의 본거지.">
+  <title>Dongne — a small studio</title>
+  <meta name="description" content="Dongne is a small studio making quiet, careful software. Home of Sediment and Final Whistle.">
   <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/">
   <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/en/">
   <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/ja/">
   <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/">
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem('dongne-lang')) return;
-        var l = (navigator.language || '').toLowerCase();
-        if (l.indexOf('ja') === 0) location.replace('ja/');
-        else if (l.indexOf('en') === 0) location.replace('en/');
-      } catch (e) {}
-    })();
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -62,334 +52,174 @@
         radial-gradient(circle at 90% 100%, var(--bg-grain) 0%, transparent 50%);
     }
 
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 88px 28px 64px;
-    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 88px 28px 64px; }
 
-    /* — masthead — */
     .masthead {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 96px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; margin-bottom: 96px;
     }
     .mark {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
     }
     .mark .dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-right: 8px;
-      vertical-align: 1px;
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); margin-right: 8px; vertical-align: 1px;
     }
     .meta-link {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-decoration: none; text-transform: uppercase;
     }
     .meta-link:hover { color: var(--fg); }
 
     .lang-nav {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 10.5px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
+      font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+      display: inline-flex; gap: 8px; align-items: center;
     }
     .lang-nav a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dashed transparent;
-      padding-bottom: 1px;
+      color: var(--muted); text-decoration: none;
+      border-bottom: 1px dashed transparent; padding-bottom: 1px;
       transition: color 180ms ease, border-color 180ms ease;
     }
     .lang-nav a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     .lang-nav .current { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
     .lang-nav .sep { opacity: 0.4; }
 
-    /* — hero — */
-    .hero {
-      margin-bottom: 88px;
-    }
+    .hero { margin-bottom: 88px; }
     .hero h1 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(56px, 12vw, 120px);
-      line-height: 0.95;
-      letter-spacing: -2.5px;
+      font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-style: italic;
+      font-size: clamp(56px, 12vw, 120px); line-height: 0.95; letter-spacing: -2.5px;
       margin: 0 0 32px;
     }
     .hero h1 .ko {
-      display: block;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 0.32em;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-top: 18px;
+      display: block; font-style: normal; font-weight: 400; font-size: 0.32em;
+      letter-spacing: 0.08em; color: var(--muted); margin-top: 18px;
       font-family: 'Newsreader', 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
     }
     .hero .lede {
-      font-family: 'Newsreader', Georgia, serif;
-      font-size: 19px;
-      line-height: 1.55;
-      max-width: 30em;
-      color: var(--fg);
-      margin: 0;
+      font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.55;
+      max-width: 30em; color: var(--fg); margin: 0;
     }
     .hero .lede em {
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent);
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent);
     }
 
-    /* — projects — */
     .projects-label {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 28px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+      margin: 0 0 28px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
     }
 
     .project {
-      position: relative;
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 24px;
-      align-items: start;
-      padding: 32px 4px 32px 4px;
+      position: relative; display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 24px; align-items: start; padding: 32px 4px;
       border-bottom: 1px solid var(--line);
       transition: background 250ms ease, padding-left 220ms ease;
     }
-    .project__cover {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      text-indent: -9999px;
-      overflow: hidden;
-    }
-    .project:hover {
-      background: rgba(160,82,45,0.04);
-      padding-left: 12px;
-    }
+    .project__cover { position: absolute; inset: 0; z-index: 1; text-indent: -9999px; overflow: hidden; }
+    .project:hover { background: rgba(160,82,45,0.04); padding-left: 12px; }
     @media (prefers-color-scheme: dark) {
       .project:hover { background: rgba(210,137,90,0.05); }
     }
     .project .body { position: relative; }
-    .project .body .links a,
-    .project .body .links .primary {
-      position: relative;
-      z-index: 2;
-    }
-
+    .project .body .links a, .project .body .links .primary { position: relative; z-index: 2; }
     .project .num {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      padding-top: 10px;
+      font-size: 11px; letter-spacing: 1.5px; color: var(--muted); padding-top: 10px;
     }
     .project .body h2 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 400;
-      font-size: 30px;
-      letter-spacing: -0.5px;
-      margin: 0 0 6px;
-      color: var(--fg);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 30px;
+      letter-spacing: -0.5px; margin: 0 0 6px; color: var(--fg);
+      display: inline-flex; align-items: center; gap: 12px;
     }
-    .project .body h2 .swatch {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-    }
+    .project .body h2 .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     .project[data-id="sediment"] .swatch { background: var(--sediment); }
     .project[data-id="whistle"] .swatch  { background: var(--whistle); }
-
     .project .body .kicker {
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0 0 14px;
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--muted); margin: 0 0 14px;
     }
     .project .body p {
-      margin: 0 0 14px;
-      font-size: 15.5px;
-      line-height: 1.65;
-      color: var(--fg);
-      max-width: 38em;
+      margin: 0 0 14px; font-size: 15.5px; line-height: 1.65; color: var(--fg); max-width: 38em;
     }
     .project .body .links {
-      list-style: none;
-      padding: 0;
-      margin: 6px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 18px;
+      list-style: none; padding: 0; margin: 6px 0 0;
+      display: flex; flex-wrap: wrap; gap: 6px 18px;
     }
     .project .body .links .primary {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      letter-spacing: 0.5px;
-      color: var(--accent);
-      border-bottom: 1px dashed transparent;
-      padding-bottom: 1px;
+      font-size: 12px; letter-spacing: 0.5px; color: var(--accent);
+      border-bottom: 1px dashed transparent; padding-bottom: 1px;
       transition: border-color 200ms ease;
     }
     .project[data-id="sediment"] .links .primary { color: var(--sediment); }
     .project[data-id="whistle"]  .links .primary { color: var(--whistle); }
     .project:hover .links .primary { border-bottom-color: currentColor; }
-    .project .body .links .primary::after {
-      content: " ↗";
-      opacity: 0.55;
-    }
+    .project .body .links .primary::after { content: " ↗"; opacity: 0.55; }
     .project .body .links a {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dashed transparent;
-      padding-bottom: 1px;
+      font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted);
+      text-decoration: none; border-bottom: 1px dashed transparent; padding-bottom: 1px;
       transition: color 180ms ease, border-color 180ms ease;
     }
-    .project .body .links a:hover {
-      color: var(--fg);
-      border-bottom-color: var(--fg);
-    }
+    .project .body .links a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
     .project .body .store-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 14px 0 4px;
-      position: relative;
-      z-index: 2;
+      display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; position: relative; z-index: 2;
     }
     .store-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--bg);
-      color: var(--fg);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px;
+      border: 1px solid var(--line); border-radius: 10px;
+      background: var(--bg); color: var(--fg); text-decoration: none;
       transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
     }
     .store-badge:hover {
-      border-color: var(--whistle);
-      background: rgba(91,84,217,0.04);
-      transform: translateY(-1px);
+      border-color: var(--whistle); background: rgba(91,84,217,0.04); transform: translateY(-1px);
     }
     @media (prefers-color-scheme: dark) {
       .store-badge:hover { background: rgba(157,151,255,0.08); }
     }
-    .store-badge .glyph {
-      width: 18px; height: 18px;
-      flex-shrink: 0;
-      color: var(--whistle);
-    }
+    .store-badge .glyph { width: 18px; height: 18px; flex-shrink: 0; color: var(--whistle); }
     .store-badge .label {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
+      display: flex; flex-direction: column; line-height: 1.1;
       font-family: 'Newsreader', 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
     }
     .store-badge .label .small {
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 9.5px;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2px;
+      font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 2px;
     }
-    .store-badge .label .big {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.2px;
-    }
+    .store-badge .label .big { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
 
     .project .arrow {
-      align-self: center;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 28px;
-      color: var(--muted);
-      opacity: 0.4;
-      transition: transform 220ms ease, opacity 220ms ease;
-      padding-right: 4px;
+      align-self: center; font-family: 'Fraunces', Georgia, serif; font-size: 28px;
+      color: var(--muted); opacity: 0.4;
+      transition: transform 220ms ease, opacity 220ms ease; padding-right: 4px;
     }
-    .project:hover .arrow {
-      opacity: 1;
-      transform: translateX(4px);
-    }
+    .project:hover .arrow { opacity: 1; transform: translateX(4px); }
 
-    /* — footer — */
     footer {
-      margin-top: 96px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
+      margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
       font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;
     }
     footer a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--line);
-      padding-bottom: 1px;
+      color: var(--muted); text-decoration: none;
+      border-bottom: 1px dashed var(--line); padding-bottom: 1px;
     }
     footer a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     footer .colophon {
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-size: 13px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--muted);
-      max-width: 24em;
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 13px;
+      letter-spacing: 0; text-transform: none; color: var(--muted); max-width: 24em;
     }
 
     @media (max-width: 640px) {
       .wrap { padding: 56px 22px 48px; }
-      .masthead { margin-bottom: 64px; }
+      .masthead { margin-bottom: 64px; flex-wrap: wrap; }
       .hero { margin-bottom: 64px; }
-      .project {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
+      .project { grid-template-columns: 1fr; gap: 6px; }
       .project .num { padding-top: 0; }
       .project .arrow { display: none; }
       footer { flex-direction: column; gap: 12px; }
@@ -401,50 +231,50 @@
 
     <header class="masthead">
       <div class="mark"><span class="dot"></span>Dongne · Studio</div>
-      <nav class="lang-nav" aria-label="언어 전환">
-        <span class="current">KO</span>
+      <nav class="lang-nav" aria-label="Language">
+        <a href="../" hreflang="ko" data-lang-switch="ko">KO</a>
         <span class="sep">·</span>
-        <a href="en/" hreflang="en" data-lang-switch="en">EN</a>
+        <span class="current">EN</span>
         <span class="sep">·</span>
-        <a href="ja/" hreflang="ja" data-lang-switch="ja">JA</a>
+        <a href="../ja/" hreflang="ja" data-lang-switch="ja">JA</a>
       </nav>
-      <a class="meta-link" href="mailto:mrbigcho@gmail.com">문의</a>
+      <a class="meta-link" href="mailto:mrbigcho@gmail.com">contact</a>
     </header>
 
     <section class="hero">
       <h1>
-        Dongne<span class="ko">동네 — 조용한 골목, 마음 가는 문 몇 개</span>
+        Dongne<span class="ko">동네 — a quiet street, a few good doors</span>
       </h1>
       <p class="lede">
-        조용히, <em>차분하게</em> 만드는 소프트웨어. 우리를 위해, 그리고 가까운 사람들을 위해 만드는 작은 앱 몇 개. 한 시즌, 한 클럽, 한 권의 노트씩 천천히.
+        A small studio making <em>careful, unhurried</em> software — a few apps for ourselves and the people nearby. We work one season, one club, one small notebook at a time.
       </p>
     </section>
 
     <section>
-      <p class="projects-label">— 우리가 만드는 것</p>
+      <p class="projects-label">— What we make</p>
 
       <article class="project" data-id="sediment">
-        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Sediment 방문하기">Sediment</a>
+        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Visit Sediment">Sediment</a>
         <div class="num">01</div>
         <div class="body">
           <h2><span class="swatch"></span>Sediment</h2>
-          <p class="kicker">조용한 보관소 — 가라앉은 것은 남는다.</p>
-          <p>하루에 작은 질문 하나만 묻고, 나머지는 흘려보내는 일기. 부담은 적게, 기억은 오래.</p>
+          <p class="kicker">A quiet archive — what settles, stays.</p>
+          <p>A daily journal that asks one small question and lets the rest of the day pass through. Low pressure, long memory.</p>
           <ul class="links">
             <li><span class="primary">sediment.dongne.dev</span></li>
-            <li><a href="sediment/legal/index.html">법적 문서 · ko / en / ja</a></li>
+            <li><a href="../sediment/legal/index.html">Legal · ko / en / ja</a></li>
           </ul>
         </div>
         <div class="arrow" aria-hidden="true">→</div>
       </article>
 
       <article class="project" data-id="whistle">
-        <a class="project__cover" href="final-whistle/" aria-label="About Final Whistle">Final Whistle</a>
+        <a class="project__cover" href="../final-whistle/en/" aria-label="About Final Whistle">Final Whistle</a>
         <div class="num">02</div>
         <div class="body">
           <h2><span class="swatch"></span>Final Whistle</h2>
-          <p class="kicker">함께 기록해 만드는 스코어보드.</p>
-          <p>주말 리그를 운영하는 사람을 위한 도구. 아마추어 축구 대회·클럽·리그·판타지를 한 손에 — 대진표는 자동으로, 결과는 한 화면에서, 순위는 그 자리에서.</p>
+          <p class="kicker">The scoreboard we keep together.</p>
+          <p>A tool for the people who run weekend leagues. Amateur football tournaments, clubs, leagues, and fantasy in one place — brackets automatic, scores in one screen, standings on the spot.</p>
           <div class="store-row">
             <a class="store-badge" href="https://apps.apple.com/app/final-whistle/id6763357952" aria-label="Download Final Whistle on the App Store">
               <svg class="glyph" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -466,8 +296,8 @@
             </a>
           </div>
           <ul class="links">
-            <li><span class="primary">자세히 보기</span></li>
-            <li><a href="final-whistle/legal/index.html">법적 문서 · ko / en</a></li>
+            <li><span class="primary">Read more</span></li>
+            <li><a href="../final-whistle/legal/index.html">Legal · ko / en</a></li>
           </ul>
         </div>
         <div class="arrow" aria-hidden="true">→</div>
@@ -476,7 +306,7 @@
 
     <footer>
       <span>© 2026 Dongne</span>
-      <span class="colophon">Fraunces 와 Newsreader. 직접 만듦, 추적 없음, 쿠키 없음.</span>
+      <span class="colophon">Set in Fraunces &amp; Newsreader. Hand-crafted, no analytics, no cookies.</span>
       <a href="mailto:mrbigcho@gmail.com">mrbigcho@gmail.com</a>
     </footer>
 

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dongne — 小さなスタジオ</title>
+  <meta name="description" content="静かに、ゆっくりとつくるソフトウェア。Sediment と Final Whistle の本拠地。">
+  <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/">
+  <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/en/">
+  <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4ede1; --bg-grain: #efe6d5; --fg: #1c160f; --muted: #7a6e5e;
+      --line: #d9cfbb; --accent: #a0522d; --sediment: #a0522d; --whistle: #5b54d9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161210; --bg-grain: #1d1815; --fg: #efe5d2; --muted: #948877;
+        --line: #322a22; --accent: #d2895a; --sediment: #d2895a; --whistle: #9d97ff;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: 'Newsreader', 'Iowan Old Style', Georgia, 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      line-height: 1.7; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 20% 0%, var(--bg-grain) 0%, transparent 45%),
+        radial-gradient(circle at 90% 100%, var(--bg-grain) 0%, transparent 50%);
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 88px 28px 64px; }
+
+    .masthead {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; margin-bottom: 96px;
+    }
+    .mark {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+    }
+    .mark .dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); margin-right: 8px; vertical-align: 1px;
+    }
+    .meta-link {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-decoration: none; text-transform: uppercase;
+    }
+    .meta-link:hover { color: var(--fg); }
+
+    .lang-nav {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+      display: inline-flex; gap: 8px; align-items: center;
+    }
+    .lang-nav a {
+      color: var(--muted); text-decoration: none;
+      border-bottom: 1px dashed transparent; padding-bottom: 1px;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+    .lang-nav a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+    .lang-nav .current { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+    .lang-nav .sep { opacity: 0.4; }
+
+    .hero { margin-bottom: 88px; }
+    .hero h1 {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-style: italic;
+      font-size: clamp(56px, 12vw, 120px); line-height: 0.95; letter-spacing: -2.5px;
+      margin: 0 0 32px;
+    }
+    .hero h1 .ko {
+      display: block; font-style: normal; font-weight: 400; font-size: 0.32em;
+      letter-spacing: 0.08em; color: var(--muted); margin-top: 18px;
+      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+    }
+    .hero .lede {
+      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      font-size: 19px; line-height: 1.7; max-width: 30em; color: var(--fg); margin: 0;
+    }
+    .hero .lede em {
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent);
+    }
+
+    .projects-label {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+      margin: 0 0 28px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+    }
+
+    .project {
+      position: relative; display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 24px; align-items: start; padding: 32px 4px;
+      border-bottom: 1px solid var(--line);
+      transition: background 250ms ease, padding-left 220ms ease;
+    }
+    .project__cover { position: absolute; inset: 0; z-index: 1; text-indent: -9999px; overflow: hidden; }
+    .project:hover { background: rgba(160,82,45,0.04); padding-left: 12px; }
+    @media (prefers-color-scheme: dark) {
+      .project:hover { background: rgba(210,137,90,0.05); }
+    }
+    .project .body { position: relative; }
+    .project .body .links a, .project .body .links .primary { position: relative; z-index: 2; }
+    .project .num {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 1.5px; color: var(--muted); padding-top: 10px;
+    }
+    .project .body h2 {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 30px;
+      letter-spacing: -0.5px; margin: 0 0 6px; color: var(--fg);
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .project .body h2 .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .project[data-id="sediment"] .swatch { background: var(--sediment); }
+    .project[data-id="whistle"] .swatch  { background: var(--whistle); }
+    .project .body .kicker {
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--muted); margin: 0 0 14px;
+    }
+    .project .body p {
+      margin: 0 0 14px; font-size: 15.5px; line-height: 1.75; color: var(--fg); max-width: 38em;
+    }
+    .project .body .links {
+      list-style: none; padding: 0; margin: 6px 0 0;
+      display: flex; flex-wrap: wrap; gap: 6px 18px;
+    }
+    .project .body .links .primary {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 12px; letter-spacing: 0.5px; color: var(--accent);
+      border-bottom: 1px dashed transparent; padding-bottom: 1px;
+      transition: border-color 200ms ease;
+    }
+    .project[data-id="sediment"] .links .primary { color: var(--sediment); }
+    .project[data-id="whistle"]  .links .primary { color: var(--whistle); }
+    .project:hover .links .primary { border-bottom-color: currentColor; }
+    .project .body .links .primary::after { content: " ↗"; opacity: 0.55; }
+    .project .body .links a {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted);
+      text-decoration: none; border-bottom: 1px dashed transparent; padding-bottom: 1px;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+    .project .body .links a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
+    .project .body .store-row {
+      display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; position: relative; z-index: 2;
+    }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px;
+      border: 1px solid var(--line); border-radius: 10px;
+      background: var(--bg); color: var(--fg); text-decoration: none;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+    .store-badge:hover {
+      border-color: var(--whistle); background: rgba(91,84,217,0.04); transform: translateY(-1px);
+    }
+    @media (prefers-color-scheme: dark) {
+      .store-badge:hover { background: rgba(157,151,255,0.08); }
+    }
+    .store-badge .glyph { width: 18px; height: 18px; flex-shrink: 0; color: var(--whistle); }
+    .store-badge .label {
+      display: flex; flex-direction: column; line-height: 1.1;
+      font-family: 'Newsreader', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+    }
+    .store-badge .label .small {
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 2px;
+    }
+    .store-badge .label .big { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
+
+    .project .arrow {
+      align-self: center; font-family: 'Fraunces', Georgia, serif; font-size: 28px;
+      color: var(--muted); opacity: 0.4;
+      transition: transform 220ms ease, opacity 220ms ease; padding-right: 4px;
+    }
+    .project:hover .arrow { opacity: 1; transform: translateX(4px); }
+
+    footer {
+      margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;
+    }
+    footer a {
+      color: var(--muted); text-decoration: none;
+      border-bottom: 1px dashed var(--line); padding-bottom: 1px;
+    }
+    footer a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+    footer .colophon {
+      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 13px;
+      letter-spacing: 0; text-transform: none; color: var(--muted); max-width: 24em;
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 56px 22px 48px; }
+      .masthead { margin-bottom: 64px; flex-wrap: wrap; }
+      .hero { margin-bottom: 64px; }
+      .project { grid-template-columns: 1fr; gap: 6px; }
+      .project .num { padding-top: 0; }
+      .project .arrow { display: none; }
+      footer { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <header class="masthead">
+      <div class="mark"><span class="dot"></span>Dongne · Studio</div>
+      <nav class="lang-nav" aria-label="言語">
+        <a href="../" hreflang="ko" data-lang-switch="ko">KO</a>
+        <span class="sep">·</span>
+        <a href="../en/" hreflang="en" data-lang-switch="en">EN</a>
+        <span class="sep">·</span>
+        <span class="current">JA</span>
+      </nav>
+      <a class="meta-link" href="mailto:mrbigcho@gmail.com">お問い合わせ</a>
+    </header>
+
+    <section class="hero">
+      <h1>
+        Dongne<span class="ko">동네 — 静かな路地、いくつかの良い扉</span>
+      </h1>
+      <p class="lede">
+        静かに、<em>ゆっくりと</em>つくるソフトウェア。自分たちのために、そして近くにいる人のための、ささやかなアプリをいくつか。ワンシーズン、ワンクラブ、一冊のノートずつ、ゆっくりと。
+      </p>
+    </section>
+
+    <section>
+      <p class="projects-label">— つくっているもの</p>
+
+      <article class="project" data-id="sediment">
+        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Sediment を見る">Sediment</a>
+        <div class="num">01</div>
+        <div class="body">
+          <h2><span class="swatch"></span>Sediment</h2>
+          <p class="kicker">静かなアーカイブ — 沈んだものは、残る。</p>
+          <p>一日に小さな問いをひとつだけ尋ねて、残りはそのまま流す日記。圧は軽く、記憶は長く。</p>
+          <ul class="links">
+            <li><span class="primary">sediment.dongne.dev</span></li>
+            <li><a href="../sediment/legal/index.html">法的文書 · ko / en / ja</a></li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </article>
+
+      <article class="project" data-id="whistle">
+        <a class="project__cover" href="../final-whistle/ja/" aria-label="Final Whistle について">Final Whistle</a>
+        <div class="num">02</div>
+        <div class="body">
+          <h2><span class="swatch"></span>Final Whistle</h2>
+          <p class="kicker">ともに記すスコアボード。</p>
+          <p>週末リーグを動かす人のための道具。アマチュアフットボールの大会・クラブ・リーグ・ファンタジーをひとつに — 組み合わせは自動で、結果は一つの画面で、順位はその場で。</p>
+          <div class="store-row">
+            <a class="store-badge" href="https://apps.apple.com/app/final-whistle/id6763357952" aria-label="App Store から Final Whistle をダウンロード">
+              <svg class="glyph" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.81.953-2.105 1.68-3.227 1.59-.143-1.107.435-2.265 1.13-3.072.79-.94 2.144-1.65 3.272-1.6zM20.5 17.55c-.555 1.215-.823 1.76-1.54 2.84-1 1.51-2.41 3.39-4.16 3.4-1.55.02-1.95-1-4.06-.99-2.11.01-2.55 1.01-4.1.99-1.75-.02-3.09-1.71-4.09-3.22C-1.05 16.4-1.34 11.4.18 8.71c1.1-1.94 2.85-3.16 4.45-3.16 1.7 0 2.78 1 4.07 1 1.27 0 2.04-1 4.04-1 1.5 0 3.06.81 4.18 2.21-3.67 2.01-3.07 7.27.58 9.78z"/>
+              </svg>
+              <span class="label">
+                <span class="small">Download on the</span>
+                <span class="big">App Store</span>
+              </span>
+            </a>
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=dev.dongne.finalwhistle" aria-label="Google Play で Final Whistle を取得">
+              <svg class="glyph" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.06 1.16c-.4.21-.65.62-.65 1.06v19.56c0 .43.25.85.65 1.05L13.7 12 3.06 1.16zM14.8 13.1l2.6 2.6-11.5 6.55c-.3.18-.66.16-.95-.04l9.85-9.11zM4.95 1.83c.29-.2.65-.22.95-.04l11.5 6.55-2.6 2.6L4.95 1.83zM21.18 11.4l-2.93-1.66-2.84 2.26 2.84 2.26 2.93-1.66c.96-.55.96-2.55 0-3.2z"/>
+              </svg>
+              <span class="label">
+                <span class="small">Get it on</span>
+                <span class="big">Google Play</span>
+              </span>
+            </a>
+          </div>
+          <ul class="links">
+            <li><span class="primary">詳しく見る</span></li>
+            <li><a href="../final-whistle/legal/index.html">法的文書 · ko / en</a></li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </article>
+    </section>
+
+    <footer>
+      <span>© 2026 Dongne</span>
+      <span class="colophon">Fraunces と Newsreader。手で作り、計測なし、Cookie なし。</span>
+      <a href="mailto:mrbigcho@gmail.com">mrbigcho@gmail.com</a>
+    </footer>
+
+  </main>
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-lang-switch]');
+      if (!a) return;
+      try { localStorage.setItem('dongne-lang', a.dataset.langSwitch); } catch (err) {}
+    });
+  </script>
+</body>
+</html>
