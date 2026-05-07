@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final Whistle — 함께 기록해 만드는 스코어보드</title>
-  <meta name="description" content="Final Whistle 의 법적 문서·소개·문의 페이지. 아마추어 축구 대회·클럽·리그·판타지를 한 손에 굴리기 위한 도구입니다.">
-  <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/final-whistle/">
-  <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/final-whistle/en/">
+  <title>Final Whistle — The scoreboard we keep together</title>
+  <meta name="description" content="Final Whistle — legal docs, intro, and contact. A tournament tool for sports and esports — clubs, leagues, and fantasy in one place.">
+  <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/final-whistle/">
+  <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/final-whistle/ko/">
   <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/final-whistle/ja/">
   <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/final-whistle/">
   <script>
@@ -15,7 +15,7 @@
         if (localStorage.getItem('dongne-lang')) return;
         var l = (navigator.language || '').toLowerCase();
         if (l.indexOf('ja') === 0) location.replace('ja/');
-        else if (l.indexOf('en') === 0) location.replace('en/');
+        else if (l.indexOf('ko') === 0) location.replace('ko/');
       } catch (e) {}
     })();
   </script>
@@ -24,377 +24,89 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f6fb;
-      --bg-tint: #ecedf8;
-      --bg-card: #ffffff;
-      --fg: #14132b;
-      --muted: #6b6a89;
-      --line: #d9d9ea;
-      --accent: #5b54d9;
-      --accent-soft: #e6e4fb;
-      --pitch: #2f6b46;
+      --bg: #f6f6fb; --bg-tint: #ecedf8; --bg-card: #ffffff; --fg: #14132b;
+      --muted: #6b6a89; --line: #d9d9ea; --accent: #5b54d9; --accent-soft: #e6e4fb; --pitch: #2f6b46;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0e0d1a;
-        --bg-tint: #161528;
-        --bg-card: #16152a;
-        --fg: #ebeaf5;
-        --muted: #8b8aac;
-        --line: #2a2942;
-        --accent: #9d97ff;
-        --accent-soft: #1f1d3a;
-        --pitch: #66c08d;
+        --bg: #0e0d1a; --bg-tint: #161528; --bg-card: #16152a; --fg: #ebeaf5;
+        --muted: #8b8aac; --line: #2a2942; --accent: #9d97ff; --accent-soft: #1f1d3a; --pitch: #66c08d;
       }
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      min-height: 100vh;
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; min-height: 100vh;
     }
-
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 56px 28px 96px;
-    }
-
-    /* — masthead — */
-    .masthead {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 72px;
-    }
-    .crumbs {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .crumbs a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dashed transparent;
-      transition: border-color 180ms ease, color 180ms ease;
-    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 56px 28px 96px; }
+    .masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 72px; }
+    .crumbs { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .crumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px dashed transparent; transition: border-color 180ms ease, color 180ms ease; }
     .crumbs a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     .crumbs .sep { margin: 0 8px; opacity: 0.5; }
-
-    .lang-nav {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
-      display: inline-flex; gap: 8px; align-items: center;
-    }
-    .lang-nav a {
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px dashed transparent; padding-bottom: 1px;
-      transition: color 180ms ease, border-color 180ms ease;
-    }
+    .lang-nav { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+    .lang-nav a { color: var(--muted); text-decoration: none; border-bottom: 1px dashed transparent; padding-bottom: 1px; transition: color 180ms ease, border-color 180ms ease; }
     .lang-nav a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     .lang-nav .current { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
     .lang-nav .sep { opacity: 0.4; }
-    /* — hero — */
+
     .hero { margin-bottom: 80px; }
-    .wordmark {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-    .wordmark .badge {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: -1px;
-      box-shadow: 0 6px 20px -8px rgba(91,84,217,0.5);
-    }
-    .wordmark .name {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: -0.3px;
-    }
-    .hero h1 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(34px, 5.5vw, 56px);
-      line-height: 1.08;
-      letter-spacing: -1.2px;
-      margin: 0 0 20px;
-      max-width: 16em;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-      font-weight: 400;
-    }
-    .hero .tagline {
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 19px;
-      line-height: 1.5;
-      color: var(--muted);
-      margin: 0 0 24px;
-      max-width: 28em;
-    }
-    .hero .lede {
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--fg);
-      margin: 0 0 28px;
-      max-width: 34em;
-    }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-size: 13.5px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: transform 180ms ease, box-shadow 220ms ease, background 200ms ease;
-    }
-    .cta--primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 6px 18px -6px rgba(91,84,217,0.55);
-    }
-    .cta--primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px -6px rgba(91,84,217,0.65);
-    }
-    .cta--ghost {
-      background: transparent;
-      color: var(--fg);
-      border: 1px solid var(--line);
-    }
+    .wordmark { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .wordmark .badge { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #fff; display: grid; place-items: center; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; font-size: 22px; letter-spacing: -1px; box-shadow: 0 6px 20px -8px rgba(91,84,217,0.5); }
+    .wordmark .name { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; letter-spacing: -0.3px; }
+    .hero h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: clamp(34px, 5.5vw, 56px); line-height: 1.08; letter-spacing: -1.2px; margin: 0 0 20px; max-width: 16em; }
+    .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+    .hero .tagline { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 300; font-size: 19px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 28em; }
+    .hero .lede { font-size: 16px; line-height: 1.7; color: var(--fg); margin: 0 0 28px; max-width: 34em; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-size: 13.5px; font-weight: 500; text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease, background 200ms ease; }
+    .cta--primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px -6px rgba(91,84,217,0.55); }
+    .cta--primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -6px rgba(91,84,217,0.65); }
+    .cta--ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
     .cta--ghost:hover { background: var(--bg-tint); }
 
-    /* — store badges — */
-    .store-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 28px 0 12px;
-    }
-    .store-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 18px 10px 16px;
-      border-radius: 12px;
-      background: var(--fg);
-      color: var(--bg);
-      text-decoration: none;
-      transition: transform 180ms ease, box-shadow 220ms ease, opacity 180ms ease;
-    }
-    .store-badge:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 22px -8px rgba(20,19,43,0.35);
-    }
-    @media (prefers-color-scheme: dark) {
-      .store-badge:hover { box-shadow: 0 8px 22px -8px rgba(0,0,0,0.6); }
-    }
-    .store-badge .glyph {
-      width: 22px; height: 22px;
-      flex-shrink: 0;
-    }
-    .store-badge .label {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    .store-badge .label .small {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 10px;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      opacity: 0.72;
-      margin-bottom: 3px;
-    }
-    .store-badge .label .big {
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-      font-family: 'Inter', sans-serif;
-    }
+    .store-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0 12px; }
+    .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 16px; border-radius: 12px; background: var(--fg); color: var(--bg); text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease, opacity 180ms ease; }
+    .store-badge:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -8px rgba(20,19,43,0.35); }
+    @media (prefers-color-scheme: dark) { .store-badge:hover { box-shadow: 0 8px 22px -8px rgba(0,0,0,0.6); } }
+    .store-badge .glyph { width: 22px; height: 22px; flex-shrink: 0; }
+    .store-badge .label { display: flex; flex-direction: column; line-height: 1.1; }
+    .store-badge .label .small { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.72; margin-bottom: 3px; }
+    .store-badge .label .big { font-size: 16px; font-weight: 600; letter-spacing: -0.2px; font-family: 'Inter', sans-serif; }
 
-    /* — section heading — */
-    .section-label {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-label::before {
-      content: "";
-      width: 24px;
-      height: 1px;
-      background: var(--muted);
-      display: inline-block;
-    }
+    .section-label { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 0 0 24px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ""; width: 24px; height: 1px; background: var(--muted); display: inline-block; }
 
-    /* — at a glance — */
-    .glance {
-      margin-bottom: 80px;
-    }
-    .glance dl {
-      margin: 0;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 18px 28px;
-    }
-    .glance dt {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11.5px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 4px;
-    }
-    .glance dd {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--fg);
-    }
-    .glance dd .accent {
-      color: var(--accent);
-      font-weight: 500;
-    }
+    .glance { margin-bottom: 80px; }
+    .glance dl { margin: 0; display: grid; grid-template-columns: 160px 1fr; gap: 18px 28px; }
+    .glance dt { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+    .glance dd { margin: 0; font-size: 15px; line-height: 1.65; color: var(--fg); }
+    .glance dd .accent { color: var(--accent); font-weight: 500; }
 
-    /* — legal cards — */
     .legal-section { margin-bottom: 80px; }
-    .legal-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .legal-card {
-      display: block;
-      padding: 22px 24px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      text-decoration: none;
-      color: var(--fg);
-      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-      background: var(--bg-card);
-    }
-    .legal-card:hover {
-      background: var(--bg-tint);
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
-    .legal-card .legal-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 500;
-      font-size: 16px;
-      margin: 0 0 6px;
-    }
-    .legal-card .legal-meta {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin: 0;
-    }
-    .legal-card .legal-desc {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.55;
-      margin: 8px 0 0;
-    }
+    .legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .legal-card { display: block; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--fg); transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; background: var(--bg-card); }
+    .legal-card:hover { background: var(--bg-tint); border-color: var(--accent); transform: translateY(-1px); }
+    .legal-card .legal-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 16px; margin: 0 0 6px; }
+    .legal-card .legal-meta { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; margin: 0; }
+    .legal-card .legal-desc { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 8px 0 0; }
 
-    /* — contact box — */
-    .contact-box {
-      margin-bottom: 56px;
-      padding: 28px 32px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--bg-card);
-    }
-    .contact-box h2 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 400;
-      font-size: 19px;
-      margin: 0 0 8px;
-      letter-spacing: -0.3px;
-    }
-    .contact-box p {
-      margin: 0 0 14px;
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    .contact-box a {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      letter-spacing: 0.3px;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--accent);
-      padding-bottom: 1px;
-    }
+    .contact-box { margin-bottom: 56px; padding: 28px 32px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-card); }
+    .contact-box h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 19px; margin: 0 0 8px; letter-spacing: -0.3px; }
+    .contact-box p { margin: 0 0 14px; font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+    .contact-box a { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.3px; color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
     .contact-box a:hover { border-bottom-style: solid; }
 
-    /* — footer — */
-    footer {
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--line);
-      padding-bottom: 1px;
-    }
+    footer { padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+    footer a { color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--line); padding-bottom: 1px; }
     footer a:hover { color: var(--fg); border-bottom-color: var(--fg); }
     footer .legal-row { display: flex; gap: 16px; flex-wrap: wrap; }
 
     @media (max-width: 640px) {
       .wrap { padding: 40px 22px 64px; }
-      .masthead { margin-bottom: 56px; }
+      .masthead { margin-bottom: 56px; flex-wrap: wrap; }
       .hero { margin-bottom: 64px; }
       .glance, .legal-section { margin-bottom: 64px; }
       .glance dl { grid-template-columns: 1fr; gap: 4px 0; }
@@ -413,10 +125,10 @@
       <p class="crumbs">
         <a href="../">docs.dongne.dev</a><span class="sep">/</span><span>Final Whistle</span>
       </p>
-      <nav class="lang-nav" aria-label="언어 전환">
-        <span class="current">KO</span>
+      <nav class="lang-nav" aria-label="Language">
+        <a href="ko/" hreflang="ko" data-lang-switch="ko">KO</a>
         <span class="sep">·</span>
-        <a href="en/" hreflang="en" data-lang-switch="en">EN</a>
+        <span class="current">EN</span>
         <span class="sep">·</span>
         <a href="ja/" hreflang="ja" data-lang-switch="ja">JA</a>
       </nav>
@@ -428,12 +140,12 @@
         <span class="name">Final Whistle</span>
       </div>
 
-      <h1>주말 리그를 <em>운영하는 사람</em>을 위한 도구.</h1>
+      <h1>A tool for the people who <em>run tournaments</em>.</h1>
 
-      <p class="tagline">함께 기록해 만드는 스코어보드.</p>
+      <p class="tagline">The scoreboard we keep together.</p>
 
       <p class="lede">
-        Final Whistle 은 아마추어 축구 대회·클럽·리그를 가볍게 굴립니다. 대진표는 자동으로, 결과 입력은 한 화면에서, 순위는 그 자리에서. 이 페이지는 Final Whistle 의 법적 문서·소개·문의를 모아둔 곳입니다.
+        Final Whistle keeps tournaments moving — sports or esports. Brackets drawn automatically, results entered in one screen, standings updated on the spot. This page collects Final Whistle's legal docs, brief intro, and contact.
       </p>
 
       <div class="store-row">
@@ -458,39 +170,29 @@
       </div>
 
       <div class="cta-row">
-        <a class="cta cta--ghost" href="legal/">전체 문서 목차 →</a>
+        <a class="cta cta--ghost" href="legal/">All legal docs →</a>
       </div>
     </section>
 
     <section class="glance">
-      <p class="section-label">한눈에</p>
+      <p class="section-label">At a glance</p>
       <dl>
-        <dt>무엇을</dt>
-        <dd>아마추어 축구 <span class="accent">대회·클럽·리그·판타지</span> 운영 도구. 대진표 자동 생성, 실시간 순위 갱신.</dd>
-        <dt>누구를 위해</dt>
-        <dd>주말 리그를 굴리는 운영자, 클럽 총무, 동호회 대장.</dd>
-        <dt>지원 포맷</dt>
-        <dd>싱글·더블 엘리미네이션, 라운드 로빈, 조별 리그, 리그 페이즈. 스위스 시스템은 실험적.</dd>
-        <dt>플랫폼</dt>
+        <dt>What</dt>
+        <dd>A <span class="accent">tournament · club · league · fantasy</span> management tool — built for sports and esports. Auto-generated brackets, live standings.</dd>
+        <dt>Who for</dt>
+        <dd>Tournament organisers, league commissioners, club secretaries, esports guild masters.</dd>
+        <dt>Formats</dt>
+        <dd>Single &amp; double elimination, round robin, group stage, league phase. Swiss system is experimental.</dd>
+        <dt>Platforms</dt>
         <dd>iOS · Android · Web (Flutter)</dd>
-        <dt>운영</dt>
-        <dd><a href="https://dongne.dev" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed currentColor;">Dongne</a> — 작은 스튜디오에서 천천히 만드는 소프트웨어.</dd>
+        <dt>Made by</dt>
+        <dd><a href="https://dongne.dev" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed currentColor;">Dongne</a> — software made slowly, in a small studio.</dd>
       </dl>
     </section>
 
     <section class="legal-section">
-      <p class="section-label">법적 문서</p>
+      <p class="section-label">Legal documents</p>
       <div class="legal-grid">
-        <a class="legal-card" href="legal/ko/privacy.html">
-          <p class="legal-title">개인정보처리방침</p>
-          <p class="legal-meta">한국어 · 2026</p>
-          <p class="legal-desc">수집 항목·목적·보유기간·제3자 제공 내역.</p>
-        </a>
-        <a class="legal-card" href="legal/ko/terms.html">
-          <p class="legal-title">이용약관</p>
-          <p class="legal-meta">한국어 · 2026</p>
-          <p class="legal-desc">서비스 이용 규칙과 사업자 정보.</p>
-        </a>
         <a class="legal-card" href="legal/en/privacy.html">
           <p class="legal-title">Privacy Policy</p>
           <p class="legal-meta">English · 2026</p>
@@ -501,30 +203,40 @@
           <p class="legal-meta">English · 2026</p>
           <p class="legal-desc">Rules of the road for using Final Whistle.</p>
         </a>
-        <a class="legal-card" href="legal/ko/delete.html">
-          <p class="legal-title">계정 삭제 안내 (KO)</p>
-          <p class="legal-meta">한국어 · How to delete</p>
-          <p class="legal-desc">앱 내 삭제 절차와 이메일 요청 안내.</p>
+        <a class="legal-card" href="legal/ko/privacy.html">
+          <p class="legal-title">개인정보처리방침</p>
+          <p class="legal-meta">한국어 · 2026</p>
+          <p class="legal-desc">Privacy Policy in Korean.</p>
+        </a>
+        <a class="legal-card" href="legal/ko/terms.html">
+          <p class="legal-title">이용약관</p>
+          <p class="legal-meta">한국어 · 2026</p>
+          <p class="legal-desc">Terms of Use in Korean.</p>
         </a>
         <a class="legal-card" href="legal/en/delete.html">
           <p class="legal-title">Delete your account (EN)</p>
           <p class="legal-meta">English · How to delete</p>
           <p class="legal-desc">In-app steps and email request flow.</p>
         </a>
+        <a class="legal-card" href="legal/ko/delete.html">
+          <p class="legal-title">계정 삭제 안내 (KO)</p>
+          <p class="legal-meta">한국어 · How to delete</p>
+          <p class="legal-desc">In-app steps and email request flow in Korean.</p>
+        </a>
       </div>
     </section>
 
     <section class="contact-box">
-      <h2>피드백이 있다면</h2>
-      <p>운영하시는 클럽·리그에 어떤 게 필요한지, 어디가 불편한지 한두 줄이면 충분합니다. 다음 시즌이 더 가벼워질 단서를 찾고 있어요.</p>
-      <a href="mailto:mrbigcho@gmail.com?subject=Final%20Whistle%20피드백">mrbigcho@gmail.com 으로 연락 →</a>
+      <h2>If you have feedback</h2>
+      <p>What's your league or club like, and what bites the most? A line or two is enough — we're looking for the small thing that would make next season a little lighter.</p>
+      <a href="mailto:mrbigcho@gmail.com?subject=Final%20Whistle%20feedback">mrbigcho@gmail.com →</a>
     </section>
 
     <footer>
       <span>© 2026 Dongne · Final Whistle</span>
       <span class="legal-row">
-        <a href="legal/ko/privacy.html">개인정보처리방침</a>
-        <a href="legal/ko/terms.html">이용약관</a>
+        <a href="legal/en/privacy.html">Privacy</a>
+        <a href="legal/en/terms.html">Terms</a>
         <a href="legal/">All locales</a>
       </span>
     </footer>
