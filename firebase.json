@@ -18,6 +18,26 @@
       "CNAME",
       "**/_build.js",
       "_landing/**"
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|svg|png|txt)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      }
     ]
   }
 }
