@@ -18,11 +18,11 @@ const OUT = __dirname;
 
 // ─── 자리표시자 치환 (sediment 와 동일 운영자) ───
 const SHARED = {
-  SUPPORT_EMAIL:      'mrbigcho@gmail.com',
-  LEGAL_EMAIL:        'mrbigcho@gmail.com',
+  SUPPORT_EMAIL:      'sangwoo@dongne.dev',
+  LEGAL_EMAIL:        'sangwoo@dongne.dev',
   HOSTING_PROVIDER:   'GitHub Pages (GitHub, Inc.) · Cloudflare Pages (Cloudflare, Inc.) · Railway Corp.',
   EFFECTIVE_DATE:     '2026-05-02',
-  LAST_UPDATED:       '2026-05-07',
+  LAST_UPDATED:       '2026-10-08',
   COMPANY_ADDRESS:    '1205-701, 107, Manhyeon-ro, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea',
   COMPANY_PHONE:      '+82-10-3445-4048',
   BUSINESS_REG_NUM:   '594-09-03558',
