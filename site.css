@@ -1,0 +1,280 @@
+/* dongne.dev 랜딩 — _landing/build.mjs 가 만드는 5개 로케일 페이지가 공유한다.
+   컨셉: 도로명주소판. 표지판 남색 하나만 크게 쓰고 나머지는 조용히.
+   모서리 위계: 표지판 18px > 번호판 8px > 건물(제품 블록) 4px. */
+
+:root {
+  --street: #F1F3F5;      /* 보도 — 페이지 바탕 */
+  --ink: #16233A;         /* 남색 기운의 본문 */
+  --muted: #556175;
+  --line: #D3D9E1;
+  --sign: #1D3E78;        /* 도로명판 남색 */
+  --sign-ink: #FFFFFF;
+  --post: #9AA3AE;
+  --focus: #E8A317;       /* 반사 앰버 — 키보드 포커스 */
+
+  /* 제품 고유 팔레트 (각 브랜드 정본에서 가져옴) */
+  --fw-bg: #0F1114;
+  --fw-ink: #F4F6F2;
+  --fw-muted: #9BA1AB;
+  --fw-green: #3DDC84;
+  --sed-bg: #F5F0E8;
+  --sed-ink: #1A1612;
+  --sed-muted: #6B635A;
+
+  --font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+          'Hiragino Sans', 'PingFang TC', 'Noto Sans CJK KR', 'Segoe UI', sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino', Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --street: #0E1728;    /* 밤길 */
+    --ink: #E6EBF2;
+    --muted: #9AA6B8;
+    --line: #24324A;
+    --post: #3A4558;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--street);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+/* 한국어만 어절 단위 줄바꿈 — 일본어·중국어는 글자 단위가 맞다 */
+:lang(ko) { word-break: keep-all; }
+
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+/* ── 상단 ─────────────────────────────── */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.wordmark {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  margin-right: auto;
+}
+.wordmark span { color: var(--sign); }
+@media (prefers-color-scheme: dark) { .wordmark span { color: var(--ink); } }
+
+.langs { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; }
+.langs a { color: var(--muted); text-decoration: none; }
+.langs a:hover { color: var(--ink); }
+.langs a[aria-current] { color: var(--ink); font-weight: 600; }
+.top__contact { font-size: 14px; font-weight: 600; text-underline-offset: 3px; }
+
+/* ── 도로명판 (히어로) ─────────────────── */
+.sign { margin: 40px 0 0; }
+.sign__face {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 44px) clamp(24px, 5vw, 56px);
+  background: var(--sign);
+  color: var(--sign-ink);
+  border-radius: 18px;
+}
+/* 실제 표지판의 안쪽 흰 테두리 */
+.sign__face::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 3px solid var(--sign-ink);
+  border-radius: 11px;
+  pointer-events: none;
+}
+.sign__from, .sign__to {
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.sign__to { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.sign__arrow { width: clamp(40px, 6vw, 72px); height: auto; }
+.sign__name { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.sign__ko {
+  font-size: clamp(56px, 12vw, 144px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+}
+.sign__ro {
+  font-size: clamp(16px, 2.6vw, 30px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+.sign__posts { display: flex; justify-content: space-around; padding: 0 22%; }
+.sign__posts i { display: block; width: 12px; height: 56px; background: var(--post); }
+
+/* ── 소개 ─────────────────────────────── */
+.intro { padding: 56px 0 72px; }
+.intro h1 {
+  margin: 0;
+  max-width: 16em;
+  font-size: clamp(31px, 4.6vw, 49px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.intro p {
+  text-wrap: pretty;
+  margin: 20px 0 0;
+  max-width: 34em;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ── 제품 (길가의 건물) ────────────────── */
+.street h2, .company h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.lots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 20px;
+}
+.lot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 36px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.lot h3 { margin: 20px 0 4px; font-size: 31px; line-height: 1.2; letter-spacing: -0.01em; }
+.lot p { margin: 0 0 12px; max-width: 32em; }
+.lot .lot__line { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+.lot__more { margin-top: auto; padding-top: 12px; font-weight: 600; text-underline-offset: 4px; align-self: flex-start; }
+
+/* 건물번호판 */
+.plate {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 68px;
+  padding: 6px 10px 8px;
+  background: var(--sign);
+  color: var(--sign-ink);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px var(--sign), inset 0 0 0 4px var(--sign-ink);
+  line-height: 1;
+}
+.plate__road { font-size: 11px; font-weight: 600; margin-top: 3px; }
+.plate__no { font-size: 30px; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+.lot--fw { background: var(--fw-bg); color: var(--fw-ink); box-shadow: inset 0 0 0 1px #2C3138; }
+.lot--fw p { color: var(--fw-muted); }
+.lot--fw .lot__line { color: var(--fw-ink); }
+.fw-mark { width: 56px; height: 56px; color: var(--fw-green); }
+.lot__actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 8px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+}
+.btn--go { background: var(--fw-green); color: var(--fw-bg); }
+.btn--line { box-shadow: inset 0 0 0 1.5px var(--fw-muted); color: var(--fw-ink); }
+.btn--go:hover { background: #5BE59A; }
+.btn--line:hover { box-shadow: inset 0 0 0 1.5px var(--fw-ink); }
+
+.lot--sed { background: var(--sed-bg); color: var(--sed-ink); padding-bottom: 100px; }
+.lot--sed p { color: var(--sed-muted); }
+.lot--sed .lot__line { color: var(--sed-ink); }
+.lot--sed h3 { font-family: var(--serif); font-weight: 400; font-size: 34px; }
+.sed-mark { font-family: var(--serif); font-size: 56px; line-height: 1; height: 56px; }
+/* Sediment 아이콘의 지층 */
+.strata { position: absolute; left: 0; right: 0; bottom: 0; display: grid; gap: 2px; }
+.strata i { display: block; height: 10px; }
+.strata i:nth-child(1) { background: #DAD6D0; }
+.strata i:nth-child(2) { background: #C6C1BA; }
+.strata i:nth-child(3) { background: #B0ABA5; }
+.strata i:nth-child(4) { background: #9B9690; }
+.strata i:nth-child(5) { background: #87827C; }
+
+/* ── 회사 정보 ─────────────────────────── */
+.company { padding-top: 80px; }
+.facts { margin: 0; max-width: 680px; border-top: 2px solid var(--ink); }
+.facts__row {
+  display: grid;
+  grid-template-columns: minmax(9em, 14em) 1fr;
+  gap: 4px 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* ── 하단 ─────────────────────────────── */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 96px;
+  padding-top: 24px;
+  padding-bottom: 48px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.foot p { margin: 0; }
+
+/* ── 좁은 화면 ─────────────────────────── */
+@media (max-width: 640px) {
+  .wrap { padding-inline: 16px; }
+  .top { flex-wrap: wrap; gap: 12px 20px; }
+  .langs { order: 3; width: 100%; }
+  .sign { margin-top: 16px; }
+  .sign__face { grid-template-columns: 1fr; gap: 8px; padding: 32px 24px; }
+  .sign__from { display: none; }
+  .sign__to { flex-direction: row; align-items: center; justify-content: center; gap: 12px; }
+  .sign__posts i { height: 36px; }
+  .intro { padding: 40px 0 56px; }
+  .lot { padding: 24px 20px 28px; }
+  .lot--sed { padding-bottom: 92px; }
+  .plate { top: 18px; right: 18px; }
+  .facts__row { grid-template-columns: 1fr; }
+}

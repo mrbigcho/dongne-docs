@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F1F3F5"/>
+  <rect x="80" y="110" width="1040" height="330" rx="28" fill="#1D3E78"/>
+  <rect x="94" y="124" width="1012" height="302" rx="18" fill="none" stroke="#fff" stroke-width="5"/>
+  <text x="160" y="300" fill="#fff" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="700" font-size="64">1</text>
+  <text x="600" y="300" fill="#fff" text-anchor="middle" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="800" font-size="150" letter-spacing="6">동네길</text>
+  <text x="600" y="375" fill="#fff" text-anchor="middle" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="600" font-size="38">Dongne-gil</text>
+  <path d="M930 236 H1012 M990 214 L1016 236 L990 258" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1040" y="330" fill="#fff" text-anchor="end" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="700" font-size="64">99</text>
+  <rect x="380" y="440" width="16" height="70" fill="#9AA3AE"/>
+  <rect x="804" y="440" width="16" height="70" fill="#9AA3AE"/>
+  <text x="80" y="580" fill="#16233A" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="700" font-size="34">동네 Dongne</text>
+  <text x="1120" y="580" fill="#556175" text-anchor="end" font-family="Apple SD Gothic Neo, Pretendard, sans-serif" font-weight="500" font-size="28">dongne.dev</text>
+</svg>

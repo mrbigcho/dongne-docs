@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dongne — a small studio</title>
-  <meta name="description" content="Dongne is a small studio making quiet, careful software. Home of Sediment and Final Whistle.">
-  <link rel="alternate" hreflang="en" href="https://docs.dongne.dev/">
-  <link rel="alternate" hreflang="ko" href="https://docs.dongne.dev/ko/">
-  <link rel="alternate" hreflang="ja" href="https://docs.dongne.dev/ja/">
-  <link rel="alternate" hreflang="zh-Hant" href="https://docs.dongne.dev/zh-Hant/">
-  <link rel="alternate" hreflang="de" href="https://docs.dongne.dev/de/">
-  <link rel="alternate" hreflang="x-default" href="https://docs.dongne.dev/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dongne — apps for the people you already know</title>
+  <meta name="description" content="Dongne is a software company in Korea building apps for friends, clubs and local groups. Makers of Final Whistle and Sediment.">
+  <link rel="canonical" href="https://dongne.dev/">
+  <link rel="alternate" hreflang="en" href="https://dongne.dev/">
+  <link rel="alternate" hreflang="ko" href="https://dongne.dev/ko/">
+  <link rel="alternate" hreflang="ja" href="https://dongne.dev/ja/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://dongne.dev/zh-Hant/">
+  <link rel="alternate" hreflang="de" href="https://dongne.dev/de/">
+  <link rel="alternate" hreflang="x-default" href="https://dongne.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dongne">
+  <meta property="og:title" content="Dongne — apps for the people you already know">
+  <meta property="og:description" content="Dongne is a software company in Korea building apps for friends, clubs and local groups. Makers of Final Whistle and Sediment.">
+  <meta property="og:url" content="https://dongne.dev/">
+  <meta property="og:image" content="https://dongne.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1D3E78">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>
     (function () {
       try {
@@ -23,298 +33,86 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f4ede1;
-      --bg-grain: #efe6d5;
-      --fg: #1c160f;
-      --muted: #7a6e5e;
-      --line: #d9cfbb;
-      --accent: #a0522d;
-      --sediment: #a0522d;
-      --whistle: #5b54d9;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #161210;
-        --bg-grain: #1d1815;
-        --fg: #efe5d2;
-        --muted: #948877;
-        --line: #322a22;
-        --accent: #d2895a;
-        --sediment: #d2895a;
-        --whistle: #9d97ff;
-      }
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Newsreader', 'Iowan Old Style', Georgia, 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      min-height: 100vh;
-      background-image:
-        radial-gradient(circle at 20% 0%, var(--bg-grain) 0%, transparent 45%),
-        radial-gradient(circle at 90% 100%, var(--bg-grain) 0%, transparent 50%);
-    }
-
-    .wrap { max-width: 760px; margin: 0 auto; padding: 88px 28px 64px; }
-
-    .masthead {
-      display: flex; align-items: baseline; justify-content: space-between;
-      gap: 16px; margin-bottom: 96px;
-    }
-    .mark {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
-    }
-    .mark .dot {
-      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); margin-right: 8px; vertical-align: 1px;
-    }
-    .meta-link {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-decoration: none; text-transform: uppercase;
-    }
-    .meta-link:hover { color: var(--fg); }
-
-    .lang-nav {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
-      display: inline-flex; gap: 8px; align-items: center;
-    }
-    .lang-nav a {
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px dashed transparent; padding-bottom: 1px;
-      transition: color 180ms ease, border-color 180ms ease;
-    }
-    .lang-nav a:hover { color: var(--fg); border-bottom-color: var(--fg); }
-    .lang-nav .current { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
-    .lang-nav .sep { opacity: 0.4; }
-
-    .hero { margin-bottom: 88px; }
-    .hero h1 {
-      font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-style: italic;
-      font-size: clamp(56px, 12vw, 120px); line-height: 0.95; letter-spacing: -2.5px;
-      margin: 0 0 32px;
-    }
-    .hero h1 .ko {
-      display: block; font-style: normal; font-weight: 400; font-size: 0.32em;
-      letter-spacing: 0.08em; color: var(--muted); margin-top: 18px;
-      font-family: 'Newsreader', 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
-    }
-    .hero .lede {
-      font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.55;
-      max-width: 30em; color: var(--fg); margin: 0;
-    }
-    .hero .lede em {
-      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent);
-    }
-
-    .projects-label {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
-      margin: 0 0 28px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
-    }
-
-    .project {
-      position: relative; display: grid; grid-template-columns: 80px 1fr auto;
-      gap: 24px; align-items: start; padding: 32px 4px;
-      border-bottom: 1px solid var(--line);
-      transition: background 250ms ease, padding-left 220ms ease;
-    }
-    .project__cover { position: absolute; inset: 0; z-index: 1; text-indent: -9999px; overflow: hidden; }
-    .project:hover { background: rgba(160,82,45,0.04); padding-left: 12px; }
-    @media (prefers-color-scheme: dark) {
-      .project:hover { background: rgba(210,137,90,0.05); }
-    }
-    .project .body { position: relative; }
-    .project .body .links a, .project .body .links .primary { position: relative; z-index: 2; }
-    .project .num {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 1.5px; color: var(--muted); padding-top: 10px;
-    }
-    .project .body h2 {
-      font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 30px;
-      letter-spacing: -0.5px; margin: 0 0 6px; color: var(--fg);
-      display: inline-flex; align-items: center; gap: 12px;
-    }
-    .project .body h2 .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .project[data-id="sediment"] .swatch { background: var(--sediment); }
-    .project[data-id="whistle"] .swatch  { background: var(--whistle); }
-    .project .body .kicker {
-      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 300;
-      font-size: 16px; color: var(--muted); margin: 0 0 14px;
-    }
-    .project .body p {
-      margin: 0 0 14px; font-size: 15.5px; line-height: 1.65; color: var(--fg); max-width: 38em;
-    }
-    .project .body .links {
-      list-style: none; padding: 0; margin: 6px 0 0;
-      display: flex; flex-wrap: wrap; gap: 6px 18px;
-    }
-    .project .body .links .primary {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 12px; letter-spacing: 0.5px; color: var(--accent);
-      border-bottom: 1px dashed transparent; padding-bottom: 1px;
-      transition: border-color 200ms ease;
-    }
-    .project[data-id="sediment"] .links .primary { color: var(--sediment); }
-    .project[data-id="whistle"]  .links .primary { color: var(--whistle); }
-    .project:hover .links .primary { border-bottom-color: currentColor; }
-    .project .body .links .primary::after { content: " ↗"; opacity: 0.55; }
-    .project .body .links a {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted);
-      text-decoration: none; border-bottom: 1px dashed transparent; padding-bottom: 1px;
-      transition: color 180ms ease, border-color 180ms ease;
-    }
-    .project .body .links a:hover { color: var(--fg); border-bottom-color: var(--fg); }
-
-    .project .body .store-row {
-      display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; position: relative; z-index: 2;
-    }
-    .store-badge {
-      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px;
-      border: 1px solid var(--line); border-radius: 10px;
-      background: var(--bg); color: var(--fg); text-decoration: none;
-      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-    }
-    .store-badge:hover {
-      border-color: var(--whistle); background: rgba(91,84,217,0.04); transform: translateY(-1px);
-    }
-    @media (prefers-color-scheme: dark) {
-      .store-badge:hover { background: rgba(157,151,255,0.08); }
-    }
-    .store-badge .glyph { width: 18px; height: 18px; flex-shrink: 0; color: var(--whistle); }
-    .store-badge .label {
-      display: flex; flex-direction: column; line-height: 1.1;
-      font-family: 'Newsreader', 'Apple SD Gothic Neo', 'Noto Serif KR', serif;
-    }
-    .store-badge .label .small {
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 2px;
-    }
-    .store-badge .label .big { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
-
-    .project .arrow {
-      align-self: center; font-family: 'Fraunces', Georgia, serif; font-size: 28px;
-      color: var(--muted); opacity: 0.4;
-      transition: transform 220ms ease, opacity 220ms ease; padding-right: 4px;
-    }
-    .project:hover .arrow { opacity: 1; transform: translateX(4px); }
-
-    footer {
-      margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--line);
-      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
-      font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;
-    }
-    footer a {
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px dashed var(--line); padding-bottom: 1px;
-    }
-    footer a:hover { color: var(--fg); border-bottom-color: var(--fg); }
-    footer .colophon {
-      font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 13px;
-      letter-spacing: 0; text-transform: none; color: var(--muted); max-width: 24em;
-    }
-
-    @media (max-width: 640px) {
-      .wrap { padding: 56px 22px 48px; }
-      .masthead { margin-bottom: 64px; flex-wrap: wrap; }
-      .hero { margin-bottom: 64px; }
-      .project { grid-template-columns: 1fr; gap: 6px; }
-      .project .num { padding-top: 0; }
-      .project .arrow { display: none; }
-      footer { flex-direction: column; gap: 12px; }
-    }
-    footer .biz {
-      flex-basis: 100%; display: flex; flex-direction: column; gap: 4px;
-      font-style: normal; text-transform: none; letter-spacing: 0.5px;
-    }
-  </style>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-  <main class="wrap">
+  <header class="top wrap">
+    <a class="wordmark" href=""><span lang="ko">동네</span> Dongne</a>
+    <nav class="langs" aria-label="Language">
+          <a aria-current="page" lang="en">English</a>
+          <a href="ko/" hreflang="ko" lang="ko" data-lang-switch="ko">한국어</a>
+          <a href="ja/" hreflang="ja" lang="ja" data-lang-switch="ja">日本語</a>
+          <a href="zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-lang-switch="zh-Hant">繁體中文</a>
+          <a href="de/" hreflang="de" lang="de" data-lang-switch="de">Deutsch</a>
+    </nav>
+    <a class="top__contact" href="mailto:sangwoo@dongne.dev">Contact</a>
+  </header>
 
-    <header class="masthead">
-      <div class="mark"><span class="dot"></span>Dongne · Studio</div>
-      <nav class="lang-nav" aria-label="Language">
-        <a href="ko/" hreflang="ko" data-lang-switch="ko">KO</a>
-        <span class="sep">·</span>
-        <span class="current">EN</span>
-        <span class="sep">·</span>
-        <a href="ja/" hreflang="ja" data-lang-switch="ja">JA</a>
-        <span class="sep">·</span>
-        <a href="zh-Hant/" hreflang="zh-Hant" data-lang-switch="zh-Hant">繁中</a>
-        <span class="sep">·</span>
-        <a href="de/" hreflang="de" data-lang-switch="de">DE</a>
-      </nav>
-      <a class="meta-link" href="mailto:sangwoo@dongne.dev">contact</a>
-    </header>
+  <main>
+    <div class="wrap">
+      <figure class="sign" role="img" aria-label="Road sign: Dongne-gil, numbers 1 to 99">
+        <div class="sign__face">
+          <span class="sign__from">1</span>
+          <span class="sign__name"><span class="sign__ko" lang="ko">동네길</span><span class="sign__ro">Dongne-gil</span></span>
+          <span class="sign__to"><svg class="sign__arrow" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12 H40 M30 3 L42 12 L30 21" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>99</span></span>
+        </div>
+        <div class="sign__posts" aria-hidden="true"><i></i><i></i></div>
+      </figure>
 
-    <section class="hero">
-      <h1>
-        Dongne<span class="ko">동네 — a quiet street, a few good doors</span>
-      </h1>
-      <p class="lede">
-        A small studio making <em>careful, unhurried</em> software — a few apps for ourselves, and for the people nearby. One season, one club, one notebook at a time.
-      </p>
+      <section class="intro">
+        <h1>Apps for the people you already know.</h1>
+        <p>Dongne is a software company in Yongin, Korea, founded in 2025. We build services for friends, clubs and local groups: people who already share a pitch, a league or a neighborhood.</p>
+      </section>
+    </div>
+
+    <section class="street wrap" aria-labelledby="products-title">
+      <h2 id="products-title">Products</h2>
+      <div class="lots">
+        <article class="lot lot--fw">
+          <div class="plate" role="img" aria-label="Dongne-gil 3"><span class="plate__road">동네길</span><span class="plate__no">3</span></div>
+          <svg class="fw-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M7 24 H39 A17 17 0 1 1 23.1 35 H7 A3 3 0 0 1 4 32 V27 A3 3 0 0 1 7 24 Z M39 34 L45.7 38.8 L43.1 46.7 L34.9 46.7 L32.3 38.8 Z"/><path d="M38 17 L38 8 M46 19 L50 11 M53 24 L60 18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>
+          <h3>Final Whistle</h3>
+          <p class="lot__line">Run a tournament from the first whistle to the final table.</p>
+          <p>Brackets, leagues and clubs for sports and esports in one app. Draws are made automatically, results go in on one screen, and standings update straight away.</p>
+          <div class="lot__actions">
+            <a class="btn btn--go" href="https://apps.apple.com/app/final-whistle/id6763357952">App Store</a>
+            <a class="btn btn--line" href="https://play.google.com/store/apps/details?id=dev.dongne.finalwhistle">Google Play</a>
+          </div>
+          <a class="lot__more" href="final-whistle/">About Final Whistle</a>
+        </article>
+
+        <article class="lot lot--sed">
+          <div class="plate" role="img" aria-label="Dongne-gil 8"><span class="plate__road">동네길</span><span class="plate__no">8</span></div>
+          <span class="sed-mark" aria-hidden="true">S</span>
+          <h3>Sediment</h3>
+          <p class="lot__line">One small question a day.</p>
+          <p>A journal that asks one question each day and lets the rest of the day pass. Low pressure, long memory.</p>
+          <a class="lot__more" href="https://sediment.dongne.dev">Open Sediment</a>
+          <div class="strata" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+      </div>
     </section>
 
-    <section>
-      <p class="projects-label">— What we make</p>
-
-      <article class="project" data-id="sediment">
-        <a class="project__cover" href="https://sediment.dongne.dev" aria-label="Visit Sediment">Sediment</a>
-        <div class="num">01</div>
-        <div class="body">
-          <h2><span class="swatch"></span>Sediment</h2>
-          <p class="kicker">A quiet archive — what settles, stays.</p>
-          <p>A daily journal that asks one small question and lets the rest of the day pass through. Low pressure, long memory.</p>
-          <ul class="links">
-            <li><span class="primary">sediment.dongne.dev</span></li>
-          </ul>
-        </div>
-        <div class="arrow" aria-hidden="true">→</div>
-      </article>
-
-      <article class="project" data-id="whistle">
-        <a class="project__cover" href="final-whistle/" aria-label="About Final Whistle">Final Whistle</a>
-        <div class="num">02</div>
-        <div class="body">
-          <h2><span class="swatch"></span>Final Whistle</h2>
-          <p class="kicker">The scoreboard we keep together.</p>
-          <p>A tool for the people who run tournaments — sports or esports. Brackets, clubs, leagues, and fantasy in one place — drawn automatically, scored in one screen, standings on the spot.</p>
-          <ul class="links">
-            <li><span class="primary">Read more</span></li>
-          </ul>
-        </div>
-        <div class="arrow" aria-hidden="true">→</div>
-      </article>
+    <section class="company wrap" aria-labelledby="company-title">
+      <h2 id="company-title">Company</h2>
+      <dl class="facts">
+          <div class="facts__row"><dt>Trade name</dt><dd>Dongne (동네)</dd></div>
+          <div class="facts__row"><dt>Representative</dt><dd>Sangwoo Cho (조상우)</dd></div>
+          <div class="facts__row"><dt>Founded</dt><dd>May 2025</dd></div>
+          <div class="facts__row"><dt>Business registration no.</dt><dd>594-09-03558</dd></div>
+          <div class="facts__row"><dt>Mail-order business no.</dt><dd>2026-Yongin Suji-1967</dd></div>
+          <div class="facts__row"><dt>Email</dt><dd><a href="mailto:sangwoo@dongne.dev">sangwoo@dongne.dev</a></dd></div>
+      </dl>
     </section>
-
-    <footer>
-      <address class="biz">
-        <span>상호 동네 (Dongne) · 대표 조상우 (Sangwoo Cho)</span>
-        <span>사업자등록번호 594-09-03558 · 통신판매업 신고번호 제 2026-용인수지-1967 호</span>
-      </address>
-      <span>© 2026 Dongne</span>
-      <span class="colophon">Set in Fraunces &amp; Newsreader. Hand-crafted, no analytics, no cookies.</span>
-      <a href="mailto:sangwoo@dongne.dev">sangwoo@dongne.dev</a>
-    </footer>
-
   </main>
+
+  <footer class="foot wrap">
+    <p>© 2026 Dongne</p>
+    <p>This site uses no cookies and no analytics.</p>
+  </footer>
+
   <script>
     document.addEventListener('click', function (e) {
       var a = e.target.closest('[data-lang-switch]');

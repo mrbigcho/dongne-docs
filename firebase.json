@@ -16,7 +16,8 @@
       "**/node_modules/**",
       "README.md",
       "CNAME",
-      "**/_build.js"
+      "**/_build.js",
+      "_landing/**"
     ]
   }
 }

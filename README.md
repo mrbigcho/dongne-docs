@@ -56,6 +56,8 @@ node sediment/legal/_build.js
 ## Firebase Hosting (dongne.dev)
 
 같은 내용을 회사 도메인 `https://dongne.dev/` 에도 띄웁니다. Firebase 프로젝트 `dongne-final-whistle` 의 `dongne-studio` 사이트 (Final Whistle 은 같은 프로젝트의 `dongne-final-whistle` 사이트 = `fw.dongne.dev`).
+랜딩(`index.html` + `ko/ ja/ zh-Hant/ de/`)은 `_landing/build.mjs` 가 생성한다 — 직접 고치지 말고 스크립트의 문구·템플릿을 고친 뒤 `node _landing/build.mjs`. 스타일은 `site.css`, 대표 이미지 `og.png` 는 `rsvg-convert -w 1200 -h 630 _landing/og.svg -o og.png`.
+
 GitHub Pages 는 push 로 자동 반영되지만 dongne.dev 는 수동 배포:
 
 ```bash
