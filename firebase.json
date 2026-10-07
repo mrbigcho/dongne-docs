@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "site": "dongne-studio",
+    "public": ".",
+    "cleanUrls": false,
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".firebase/**",
+      ".firebase",
+      ".gitignore",
+      ".git",
+      ".git/**",
+      ".nojekyll",
+      "**/.DS_Store",
+      "**/node_modules/**",
+      "README.md",
+      "CNAME",
+      "**/_build.js"
+    ]
+  }
+}

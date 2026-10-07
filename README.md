@@ -53,10 +53,19 @@ node sediment/legal/_build.js
 
 각 앱에서 약관 화면을 열 때 위 URL 로 외부 링크를 띄웁니다.
 
+## Firebase Hosting (dongne.dev)
+
+같은 내용을 회사 도메인 `https://dongne.dev/` 에도 띄웁니다. Firebase 프로젝트 `dongne-final-whistle` 의 `dongne-studio` 사이트 (Final Whistle 은 같은 프로젝트의 `dongne-final-whistle` 사이트 = `fw.dongne.dev`).
+GitHub Pages 는 push 로 자동 반영되지만 dongne.dev 는 수동 배포:
+
+```bash
+firebase deploy --only hosting:dongne-studio
+```
+
 ## 변경 이력
 
 - **2026-04-29** — 초기 버전. Final Whistle legal 이전 + Sediment legal (ko/en/ja) 생성.
 
 ## 연락처
 
-mrbigcho@gmail.com
+sangwoo@dongne.dev
